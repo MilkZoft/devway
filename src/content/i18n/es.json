@@ -1,0 +1,20 @@
+{
+  "site": {
+    "language": "es",
+    "title": "Codejobs - Aprende a Programar",
+    "meta": {
+      "keywords": "HTML5, JavaScript, Node.js",
+      "abstract": "Aprende a programar",
+      "description": "Aprende a programar"
+    }
+  },
+  "menu": {
+    "register": "Registro",
+    "login": "Conectar"
+  },
+  "blog" : {
+    "posts": {
+      "title": "Título de la publicación"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+header
+    background-color white
+    font-family 'Open Sans', sans-serif
+    font-size 14px
+    height: 50px
+    line-height 50px
+    position relative
+
+    .wrapper
+        margin 0 auto
+        width 90%
+
+        .menu
+
+
+        .logo
+            font-size 26px
+            margin 0 auto
+            text-transform uppercase
+            width 130px
+
+            .code
+                color darkGray
+
+            .jobs
+                color jobsBlue
+                font-weight fontWeightBold
+
+        .access
+            position absolute
+            right 0px
+            top 0
+
+            ul
+                $resetUl()
+
+                li
+                    display inline-block
+                    margin-right 10px
+
+                    a
+                        display block
+
+                        &:hover
+                            color jobsBlue
+
+                        &::first-letter
+                            color jobsBlue

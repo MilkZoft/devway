@@ -1,0 +1,12 @@
+@import '_mixins'
+
+min = 375px
+max = 667px
+
+@media only screen and (min-device-width: min) and (max-device-width: max)
+    $removeHeaderOptions()
+    $centerLogo()
+    $displayDeviceMenu(18px, 45px)
+
+@media only screen and (min-device-width: min) and (max-device-width: max) and (orientation: landscape)
+    $modifyDeviceMenuSize(15px, 35px)

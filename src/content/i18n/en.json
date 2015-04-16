@@ -1,0 +1,20 @@
+{
+  "site": {
+    "language": "en",
+    "title": "Codejobs - Learn to code",
+    "meta": {
+      "keywords": "HTML5, JavaScript, Node.js",
+      "abstract": "Learn to code",
+      "description": "Learn to code"
+    }
+  },
+  "menu": {
+    "register": "Register",
+    "login": "Login"
+  },
+  "blog" : {
+    "posts": {
+      "title": "Post title"
+    }
+  }
+}

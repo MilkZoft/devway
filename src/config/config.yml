@@ -1,0 +1,48 @@
+---
+production: &default
+  serverPort: 2525
+  baseUrl: http://www.codejobs.biz
+  cookieDomain: .codejobs.biz
+  views:
+    minify: true
+    stylusPrecompile: true
+  html:
+    engine: handlebars
+    extension: .hbs
+    layout: main
+  controllers:
+    default: home
+    blog:
+      postPerPage: 12
+  languages:
+    default: es
+    list: [en, es, fr, pt, ge, jp, ch]
+  security:
+    secret: co3j0bs.biz
+  database:
+    mysql:
+      host: 127.0.0.1
+      user: root
+      password:
+      database: codejobs
+      port: 3306
+      debug: true
+      socket: /var/mysql/mysql.sock
+    mongodb:
+      uri: mongodb://localhost/
+      database: codejobs
+
+stage: &stage
+  <<: *default
+  baseUrl: http://stage.codejobs.biz
+
+latest: &latest
+  <<: *stage
+  baseUrl: http://latest.codejobs.biz
+
+development:
+  <<: *latest
+  baseUrl: http://local.codejobs.biz
+  views:
+    minify: false
+    stylusPrecompile: false
