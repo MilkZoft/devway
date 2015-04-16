@@ -2,8 +2,8 @@ header
     background-color white
     font-family 'Open Sans', sans-serif
     font-size 14px
-    height: 50px
-    line-height 50px
+    height: 60px
+    line-height 60px
     position relative
 
     .wrapper
@@ -11,7 +11,21 @@ header
         width 90%
 
         .menu
+            position absolute
+            left 0
+            top 0
 
+            ul
+                $resetUl()
+
+                li
+                    display inline-block
+                    margin-left 10px
+
+                    a
+                        &.hamburger,
+                        &.search
+                            font-size 24px
 
         .logo
             font-size 26px
@@ -21,10 +35,15 @@ header
 
             .code
                 color darkGray
-
             .jobs
                 color jobsBlue
                 font-weight fontWeightBold
+
+            &:hover
+                .code
+                    color jobsBlue
+                .jobs
+                    color darkGray
 
         .access
             position absolute
