@@ -10,6 +10,9 @@ production: &default
     engine: handlebars
     extension: .hbs
     layout: main
+    requireJs: true
+    requireJsSrc: /bower_components/requirejs/require.js
+    requireJsMain: /js/main
   controllers:
     default: home
     blog:

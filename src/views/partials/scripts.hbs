@@ -1,0 +1,17 @@
+{{#if config.html.requireJs }}
+    <script
+        type="application/javascript"
+        data-main="{{ config.html.requireJsMain }}"
+        src="{{ config.html.requireJsSrc }}">
+    </script>
+
+    <script type="application/javascript">
+        {{#js}}
+        require(['{{ this }}']);
+        {{/js}}
+    </script>
+{{else}}
+    {{#js}}
+    <script type="application/javascript" src="{{ this }}"></script>
+    {{/js}}
+{{/if}}

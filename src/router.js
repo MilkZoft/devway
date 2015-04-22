@@ -28,10 +28,9 @@ module.exports = function(app) {
       '/css/style.css'
     ];
 
-    res.locals.bottomJs = [
-      '/bower_components/jquery/dist/jquery.min.js',
-      '/js/device-detector.js',
-      '/js/menu.js'
+    res.locals.js = [
+      'app/device',
+      'app/menu'
     ];
 
     next();
