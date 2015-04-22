@@ -11,17 +11,6 @@ module.exports = function(config) {
     files: [
       // Dependencies
       'src/public/bower_components/lodash/dist/lodash.min.js',
-      'src/public/bower_components/domready/ready.min.js',
-      'src/public/bower_components/angular/angular.js',
-      'src/public/bower_components/angular-mocks/angular-mocks.js',
-      'src/public/bower_components/restangular/dist/restangular.min.js',
-
-      'test/clientTestHelper.js',
-      'src/public/js/utils.js',
-
-      // fixtures
-      //'test/fixtures/public/js/**/*.html',
-      'test/fixtures/public/js/**/*.json',
 
       // Tests files
       'test/public/js/**/*Test.js'
