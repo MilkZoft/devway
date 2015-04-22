@@ -1,12 +1,7 @@
 @import '_mixins'
 
-min = 320px
-max = 568px
+@media iPhone5
+    $changeBodyColor(red)
 
-@media only screen and (min-device-width: min) and (max-device-width: max)
-    $removeHeaderOptions()
-    $centerLogo()
-    $displayDeviceMenu()
-
-@media only screen and (min-device-width: min) and (max-device-width: max) and (orientation: landscape)
-    $modifyDeviceMenuSize()
+@media iPhone5Landscape
+    $changeBodyColor(green)

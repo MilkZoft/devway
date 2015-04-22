@@ -1,6 +1,8 @@
-$changeBodyColor(color)
+@import '../_variables'
+
+$changeBodyColor($color)
     body
-        background-color color
+        background-color $color
 
 $removeHeaderOptions()
     header
@@ -21,7 +23,7 @@ $centerLogo()
                 float none
                 margin 0 auto
 
-$displayDeviceMenu(fontSize = 14px, height = 26px)
+$displayDeviceMenu($fontSize = 14px, $height = 26px)
     .show-nav
         nav
             display block
@@ -32,16 +34,16 @@ $displayDeviceMenu(fontSize = 14px, height = 26px)
             ul
                 li
                     a
-                        font-size fontSize
-                        height height
-                        line-height height
+                        font-size $fontSize
+                        height $height
+                        line-height $height
 
-$modifyDeviceMenuSize(fontSize = 14px, height = 26px)
+$modifyDeviceMenuSize($fontSize = 14px, $height = 26px)
     .site-wrap
         nav
             ul
                 li
                     a
-                        font-size fontSize
-                        height height
-                        line-height height
+                        font-size $fontSize
+                        height $height
+                        line-height $height

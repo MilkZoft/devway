@@ -2,21 +2,54 @@
 vendor-prefixes = o ms moz webkit official
 
 /* Header */
-headerBgColor = #F5F5F5
+$headerBgColor = #F5F5F5
 
 /* Logo & menu options */
-grayWhite = #F5F5F5
-jobsBlue = #0085DE
+$grayWhite = #F5F5F5
+$jobsBlue  = #0085DE
 
 /* General Colors */
-darkGray = #222
-lighGray = #EEE
-lighterGray = #F0F0F0
-gray = #CCC
-white = #FFF
-black = #000
+$darkGray    = #222
+$lighGray    = #EEE
+$lighterGray = #F0F0F0
+$gray        = #CCC
+$white       = #FFF
+$black       = #000
 
 /* Font weights */
-fontWeightLight = 300
-fontWeightRegular = 500
-fontWeightBold = 700
+$fontWeightLighter = 100
+$fontWeightLight   = 300
+$fontWeightRegular = 500
+$fontWeightBold    = 700
+
+/* Mediaqueries */
+$iPaminW =  768px
+$iPamaxW = 1024px
+$iP4W  =  320px
+$iP4H  =  480px
+$iP5W  =  320px
+$iP5H  =  568px
+$iP6W  =  375px
+$iP6H  =  667px
+$iP6PW =  414px
+$iP6PH =  736px
+$all   = 1023px
+
+$s    = 'only screen and'
+$l    = 'orientation: landscape'
+$maxW = 'max-device-width:'
+$minW = 'min-device-width:'
+
+/* Devices */
+anyDevice          = $s + ' (' + $maxW + $all   + ')'
+anyDeviceLandscape = $s + ' (' + $maxW + $all   + ') and (' + $l  + ')'
+iPad               = $s + ' (' + $minW + $iPadW + ') and (' + $maxW + $iPadH + ')'
+iPadLandscape      = $s + ' (' + $minW + $iPadW + ') and (' + $maxW + $iPadH + ') and (' + $l + ')'
+iPhone6P           = $s + ' (' + $minW + $iP4W  + ') and (' + $maxW + $iP4H  + ')'
+iPhone6PLandscape  = $s + ' (' + $minW + $iP6PW + ') and (' + $maxW + $iP6PH + ') and (' + $l + ')'
+iPhone6            = $s + ' (' + $minW + $iP6W  + ') and (' + $maxW + $iP6H  + ')'
+iPhone6Landscape   = $s + ' (' + $minW + $iP6W  + ') and (' + $maxW + $iP6H  + ') and (' + $l + ')'
+iPhone5            = $s + ' (' + $minW + $iP5W  + ') and (' + $maxW + $iP5H  + ')'
+iPhone5Landscape   = $s + ' (' + $minW + $iP5W  + ') and (' + $maxW + $iP5H  + ') and (' + $l + ')'
+iPhone4            = $s + ' (' + $minW + $iP4W  + ') and (' + $maxW + $iP4H  + ')'
+iPhone4Landscape   = $s + ' (' + $minW + $iP4W  + ') and (' + $maxW + $iP4H  + ') and (' + $l + ')'

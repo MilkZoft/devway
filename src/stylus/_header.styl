@@ -34,16 +34,17 @@ header
             width 130px
 
             .code
-                color darkGray
+                color $darkGray
+
             .jobs
-                color jobsBlue
-                font-weight fontWeightBold
+                color $jobsBlue
+                font-weight $fontWeightBold
 
             &:hover
                 .code
-                    color jobsBlue
+                    color $jobsBlue
                 .jobs
-                    color darkGray
+                    color $darkGray
 
         .access
             position absolute
@@ -61,7 +62,7 @@ header
                         display block
 
                         &:hover
-                            color jobsBlue
+                            color $jobsBlue
 
                         &::first-letter
-                            color jobsBlue
+                            color $jobsBlue
