@@ -14,14 +14,15 @@ module.exports = {
     console.log(variable);
   },
 
-  minify: function(content) {
-    if (config.server.views.minify) {
-      return minify(content.fn(this), {
-        removeComments: true,
-        collapseWhitespace: true
-      });
-    }
+  json: function(content) {
+    return JSON.stringify(content);
+  },
 
-    return content.fn(this);
+  minify: function(content) {
+    return minify(content.fn(this), {
+      removeComments: true,
+      collapseWhitespace: true,
+      minifyJS: true
+    });
   }
 };
