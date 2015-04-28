@@ -1,0 +1,43 @@
+<header>
+    <div class="wrapper">
+        <div class="logo">
+            <a href="{{ globalHeaderVm.basePath }}">
+                <span class="code">Code</span><span class="jobs">Jobs</span>
+            </a>
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li>
+                    <a ng-click="">
+                        {{ globalHeaderVm.i18n.menu.topics }}
+                        <i class="fa fa-sort-desc"></i>
+                    </a>
+                </li>
+
+                <li>
+                    <a ng-click="">{{ globalHeaderVm.i18n.menu.aboutUs }}</a>
+                </li>
+
+                <li>
+                    <a ng-click="">{{ globalHeaderVm.i18n.menu.advertising }}</a>
+                </li>
+
+                <li>
+                    <a ng-click="">{{ globalHeaderVm.i18n.menu.forums }}</a>
+                </li>
+
+                <li class="search">
+                    <input type="text" name="term" autocomplete="off">
+                    <i class="fa fa-search search"></i>
+                    <i class="fa fa-close close"></i>
+                    <input type="submit" />
+                </li>
+
+                <li class="social">
+                    <social i18n="globalHeaderVm.i18n"></social>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>

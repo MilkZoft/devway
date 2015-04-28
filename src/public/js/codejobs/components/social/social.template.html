@@ -1,0 +1,37 @@
+<a
+    class="facebook"
+    ng-href="{{ socialVm.linkToNetwork({network: 'facebook'}) }}"
+    target="_blank" title="{{ socialVm.fbCounter }} {{ socialVm.i18n.social.facebook.likes }}">
+    <i class="fa fa-facebook"></i>
+
+    <div class="counter">
+        <span class="followers">{{ socialVm.likes }}</span>
+        <span class="network">{{ socialVm.i18n.social.facebook.likes }}</span>
+    </div>
+</a>
+
+<a
+    class="twitter"
+    ng-href="{{ socialVm.linkToNetwork({network: 'twitter'}) }}"
+    target="_blank"
+    title="{{ socialVm.twCounter }} {{ socialVm.i18n.social.twitter.followers }}">
+    <i class="fa fa-twitter"></i>
+
+    <div class="counter">
+        <span class="followers">{{ socialVm.followers }}</span>
+        <span class="network">{{ socialVm.i18n.social.twitter.followers }}</span>
+    </div>
+</a>
+
+<a
+    class="youtube"
+    ng-href="{{ socialVm.linkToNetwork({network: 'youtube'}) }}"
+    target="_blank"
+    title="{{ socialVm.ytCounter }} {{ socialVm.i18n.social.youtube.subscribers }}">
+    <i class="fa fa-youtube"></i>
+
+    <div class="counter">
+        <span class="followers">{{ socialVm.subscribers }}</span>
+        <span class="network">{{ socialVm.i18n.social.youtube.subscribers }}</span>
+    </div>
+</a>
