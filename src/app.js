@@ -15,8 +15,20 @@ var logger = require('morgan');
 app.use(logger('dev'));
 
 // cookies/session
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 var cookieParser = require('cookie-parser');
+
 app.use(cookieParser());
+
+app.use(session({
+  secret: config().security.secret,
+  saveUninitialized: true,
+  resave: true,
+  store: new MongoStore({
+    db : config().database.mongodb.sessionDatabase
+  })
+}));
 
 // layout
 var exphbs = require('express-handlebars');
