@@ -14,7 +14,7 @@ var oauth = new OAuth(
   config().twitter.signMethod
 );
 
-module.exports = {
+var self = {
   api: function(url) {
     return config().twitter.APIUrl + url;
   },
@@ -46,7 +46,7 @@ module.exports = {
           };
 
           oauth.get(
-            config().twitter.APIUrl + 'account/verify_credentials.json',
+            self.api('account/verify_credentials.json'),
             oauthAccessToken,
             oauthAccessTokenSecret,
             function(error, data) {
@@ -66,3 +66,5 @@ module.exports = {
     );
   }
 };
+
+module.exports = self;
