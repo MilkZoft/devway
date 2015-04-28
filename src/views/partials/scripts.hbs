@@ -1,3 +1,4 @@
+{{#minify}}
 {{#if config.html.requireJs }}
     <script
         type="application/javascript"
@@ -15,3 +16,24 @@
     <script type="application/javascript" src="{{ this }}"></script>
     {{/js}}
 {{/if}}
+
+<script>
+    (function() {
+        var config = window.codejobsConfig = window.codejobsConfig || {};
+        config.config = {};
+        config.config.facebook = {};
+        config.config.twitter = {};
+        config.config.youtube = {};
+        config.config.baseUrl = '{{{ config.baseUrl }}}';
+        config.config.baseApp = '{{{ config.baseApp }}}';
+        config.config.socialAccount = '{{{ config.socialAccount }}}';
+        config.config.facebook.likes = '{{{ config.facebook.likes }}}';
+        config.config.facebook.counter = '{{{ config.facebook.counter }}}';
+        config.config.twitter.followers = '{{{ config.twitter.followers }}}';
+        config.config.twitter.counter = '{{{ config.twitter.counter }}}';
+        config.config.youtube.subscribers = '{{{ config.youtube.subscribers }}}';
+        config.config.youtube.counter = '{{{ config.youtube.counter }}}';
+        config.i18n = '{{{ json __ }}}'
+    })();
+</script>
+{{/minify}}
