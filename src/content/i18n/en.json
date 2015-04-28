@@ -3,18 +3,28 @@
     "language": "en",
     "title": "Codejobs - Learn to code",
     "meta": {
-      "keywords": "HTML5, JavaScript, Node.js",
       "abstract": "Learn to code",
-      "description": "Learn to code"
+      "description": "Learn to code",
+      "keywords": "HTML5, JavaScript, Node.js"
     }
   },
   "menu": {
+    "aboutUs": "About us",
+    "advertising": "Advertising",
+    "forums": "Forums",
+    "login": "Login",
     "register": "Register",
-    "login": "Login"
+    "topics": "Topics"
   },
-  "blog" : {
-    "posts": {
-      "title": "Post title"
+  "social" : {
+    "facebook": {
+      "likes": "likes"
+    },
+    "twitter": {
+      "followers": "followers"
+    },
+    "youtube": {
+      "subscribers": "subscribers"
     }
   }
 }

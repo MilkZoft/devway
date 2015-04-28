@@ -3,18 +3,28 @@
     "language": "es",
     "title": "Codejobs - Aprende a Programar",
     "meta": {
-      "keywords": "HTML5, JavaScript, Node.js",
       "abstract": "Aprende a programar",
-      "description": "Aprende a programar"
+      "description": "Aprende a programar",
+      "keywords": "HTML5, JavaScript, Node.js"
     }
   },
   "menu": {
+    "aboutUs": "Nosotros",
+    "advertising": "Publicidad",
+    "forums": "Foros",
+    "login": "Conectar",
     "register": "Registro",
-    "login": "Conectar"
+    "topics": "Temas"
   },
-  "blog" : {
-    "posts": {
-      "title": "Título de la publicación"
+  "social" : {
+    "facebook": {
+      "likes": "me gusta"
+    },
+    "twitter": {
+      "followers": "seguidores"
+    },
+    "youtube": {
+      "subscribers": "suscriptores"
     }
   }
 }
