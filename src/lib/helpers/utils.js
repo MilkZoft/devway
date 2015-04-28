@@ -62,5 +62,53 @@ module.exports = {
       .replace(/'/g, '&#39;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;');
+  },
+
+  convertSecondsToHHMMSS: function(seconds) {
+    if (!seconds) {
+        return '00:00:00';
+    }
+
+    var time;
+    var hours = Math.floor(seconds / 3600);
+    var minutes = Math.floor((seconds - (hours * 3600)) / 60);
+
+    seconds = seconds - (hours * 3600) - (minutes * 60);
+
+    if (hours   < 10) {
+      hours = '0' + hours;
+    }
+
+    if (minutes < 10) {
+      minutes = '0' + minutes;
+    }
+
+    if (seconds < 10) {
+      seconds = '0' + seconds;
+    }
+
+    time = hours + ':' + minutes + ':' + seconds;
+
+    return time;
+  },
+
+  convertCamelToNatural: function(str) {
+    str = str.charAt(0).toUpperCase() + str.slice(1);
+
+    return str.split(/(?=[A-Z])/).join(' ');
+  },
+
+  isJson: function(str) {
+    if (str === null) {
+      return false;
+    }
+
+    try {
+      JSON.parse(str);
+    } catch (e) {
+      return false;
+    }
+
+    return true;
   }
 };
