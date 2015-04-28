@@ -25,6 +25,9 @@ app.use(session({
   secret: config().security.secret,
   saveUninitialized: true,
   resave: true,
+  cookie: {
+    maxAge: 180 * 60 * 1000 // 3 hours
+  },
   store: new MongoStore({
     db : config().database.mongodb.sessionDatabase
   })
