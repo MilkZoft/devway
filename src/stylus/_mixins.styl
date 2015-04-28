@@ -1,9 +1,36 @@
+/* Logo */
+$displayLogo()
+    @extend .no-select
+    color red
+    font-size 26px
+    margin 0 auto
+    text-transform uppercase
+    width 130px
+
+    .code
+        color $darkGray
+
+    .jobs
+        color $jobsBlue
+        font-weight $fontWeightBold
+
+    &:hover
+        .code
+            color $jobsBlue
+
+        .jobs
+            color $darkGray
+
 /* Borders */
 $border($size = 1px, $type = solid, $color = red)
     border $size $type $color
 
 $borderRadius($radius = 5px)
     border-radius $radius
+
+/* BoxShadow */
+$boxShadow($h = 2px, $v = 2px, $blur = 2px, $color = rgba(0, 0, 0, 0.3))
+    box-shadow $h $v $blur $color
 
 /* Lists */
 $resetUl()

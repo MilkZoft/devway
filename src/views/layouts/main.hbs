@@ -22,9 +22,15 @@
     </head>
 
     <body>
-        {{> header  }}
-        {{> content }}
-        {{> footer  }}
-        {{> scripts }}
+        <div ng-app="codejobsApp">
+            <div ng-controller="CodejobsAppController as vm">
+                <global-header
+                    i18n="vm.__">
+                </global-header>
+
+                {{> content }}
+                {{> scripts }}
+            </div>
+        </div>
     </body>
 </html>

@@ -1,68 +1,137 @@
 header
-    background-color white
+    background-color $white
     font-family 'Open Sans', sans-serif
     font-size 14px
-    height: 60px
-    line-height 60px
+    height 52px
+    line-height 52px
     position relative
+    width 100%
+    z-index 100
 
     .wrapper
         margin 0 auto
+        min-width 1200px
+        position relative
         width 90%
 
-        .menu
-            position absolute
-            left 0
-            top 0
-
-            ul
-                $resetUl()
-
-                li
-                    display inline-block
-                    margin-left 10px
-
-                    a
-                        &.hamburger,
-                        &.search
-                            font-size 24px
-
         .logo
-            font-size 26px
-            margin 0 auto
-            text-transform uppercase
-            width 130px
+            $displayLogo()
+            float left
 
-            .code
-                color $darkGray
-
-            .jobs
-                color $jobsBlue
-                font-weight $fontWeightBold
-
-            &:hover
-                .code
-                    color $jobsBlue
-                .jobs
-                    color $darkGray
-
-        .access
-            position absolute
-            right 0px
-            top 0
+        .menu
+            color $darkGray
+            float left
+            margin-left 20px
+            position relative
 
             ul
                 $resetUl()
 
                 li
-                    display inline-block
-                    margin-right 10px
+                    display block
+                    float left
+                    margin-left 30px
 
                     a
+                        position relative
+
+                        i
+                            position absolute
+                            left 45px
+                            top 0
+                    &.search
+                        background-color $white
                         display block
+                        position relative
+                        transition width 0.3s ease
+                        width 50px
+                        z-index 100
 
-                        &:hover
-                            color $jobsBlue
+                        &.active
+                            width 520px
 
-                        &::first-letter
-                            color $jobsBlue
+                            input
+                                box-sizing border-box
+                                padding 0 60px
+
+                            .close
+                                display block
+
+                        input
+
+                            background-color $white
+                            border none
+                            color #999
+                            width 95%
+
+                            &:focus
+                                outline none
+
+                        input[type=submit]
+                            display none
+
+                        i
+                            color #999
+                            cursor pointer
+                            display block
+                            line-height 52px
+                            position absolute
+                            text-align center
+                            top 0
+                            width 50px
+
+                            &.close
+                                display none
+                                right 0
+
+                    &.social
+                        float left
+                        height 52px
+                        left 500px
+                        top 0
+                        width 450px
+
+                        a
+                            display inline-block
+                            height 52px
+                            margin-left -10px
+                            vertical-align top
+                            width 150px
+
+                            .counter
+                                color $lighGray
+                                display block
+                                height 52px
+                                padding-left 50px
+
+                                span.followers
+                                    display block
+                                    font-size 18px
+                                    font-weight bold
+                                    line-height 20px
+                                    margin-top 10px
+
+                                span.network
+                                    font-weight $fontWeightLight
+                                    position absolute
+                                    text-transform capitalize
+                                    top 12px
+
+                            i
+                                color $white
+                                display block
+                                font-size 30px
+                                line-height 52px
+                                position absolute
+                                left 0
+                                text-align center
+                                width 55px
+
+                            &.facebook
+                                background-color $facebook
+
+                            &.twitter
+                                background-color $twitter
+
+                            &.youtube
+                                background-color $youtube

@@ -9,17 +9,25 @@
 .pointer
     cursor pointer
 
+.hide
+    display none
+
+.no-select
+    touch-callout none
+    user-select none
+
 html
     height 100%
 
 body
     background-color $darkGray
-    font-family 'OpenSans', 'Helvetica Neue', sans-serif
-    height 100%
-    margin 0
+    color $white
     overflow-x hidden
-    padding 0
+    width 100%
 
     a
+        cursor pointer
         text-decoration none
-        color $darkGray
+
+        &:hover
+            color $jobsBlue
