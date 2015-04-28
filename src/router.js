@@ -4,10 +4,12 @@ var config = require('./lib/config');
 var availableLanguages = config().languages.list.join('|');
 var defaultController;
 var homeController;
+var twitterController;
 
 module.exports = function(app) {
   defaultController = require('./controllers/' + config().controllers.default);
   homeController = require('./controllers/home');
+  twitterController = require('./controllers/twitter');
 
   // Load necessary helpers
   var i18n = require('./lib/helpers/i18n');
@@ -15,10 +17,12 @@ module.exports = function(app) {
 
   // Loading isMobile, basePath, currentLanguage and __
   app.use(function(req, res, next) {
+    res.locals.isConnected = true;
     res.locals.isMobile = utils.isMobile(req.headers['user-agent']);
     res.locals.config.basePath = config().baseUrl + '/' + i18n.getCurrentLanguage(req.url);
     res.locals.currentLanguage = i18n.getCurrentLanguage(req.url);
     res.locals.__ = i18n.load(i18n.getCurrentLanguage(req.url));
+    res.locals.basePath = res.locals.config.basePath;
     next();
   });
 
@@ -29,8 +33,7 @@ module.exports = function(app) {
     ];
 
     res.locals.js = [
-      'app/device',
-      'app/menu'
+      'autoloader'
     ];
 
     next();
@@ -38,6 +41,7 @@ module.exports = function(app) {
 
   // Controllers dispatch
   app.use('/', defaultController);
+  app.use('/twitter', twitterController);
   app.use('/:language(' + availableLanguages + ')', defaultController);
   app.use('/:language(' + availableLanguages + ')/home', homeController);
 
