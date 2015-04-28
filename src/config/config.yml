@@ -2,7 +2,34 @@
 production: &default
   serverPort: 2525
   baseUrl: http://www.codejobs.biz
+  baseApp: /js/codejobs/components
   cookieDomain: .codejobs.biz
+  facebook:
+    account: codejobs
+    likes: 12K
+    counter: '12,000'
+    clientId: 324953487621707
+    clientSecret: 77d85e535c01319c86f4b150bbf87f8a
+  twitter:
+    account: codejobs
+    followers: 80K
+    counter: '80,345'
+    consumerKey: D9xH0f9na6cL4oTWPldZRA
+    consumerSecret: tvodkw52PiJEVxS7XskLCXeH94qnGtNdHNFbNdsUTr4
+    accessToken: 461804603-uAtAvzW2EPTk5pl9O4fN9UXKTJ11fVba1ObYLbTU
+    accessTokenSecret: 6xRUpNVpZLtnN3HAbEV4ZZopdU4wLcJ0TUvFTO2RaeRES
+    callbackUrl: http://local.codejobs.biz/twitter/callback
+    requestTokenUrl: https://api.twitter.com/oauth/request_token
+    accessTokenUrl: https://api.twitter.com/oauth/access_token
+    authenticateUrl: https://twitter.com/oauth/authenticate
+    APIUrl: https://api.twitter.com/1.1/
+    APIVersion: 1.0A
+    signMethod: HMAC-SHA1
+  youtube:
+    account: codejobs
+    subscribers: 42K
+    counter: '42,000'
+  socialAccount: codejobs
   views:
     minify: true
     stylusPrecompile: true
@@ -32,8 +59,9 @@ production: &default
       debug: true
       socket: /var/mysql/mysql.sock
     mongodb:
-      uri: mongodb://localhost/
+      uri: mongodb://localhost:27017/
       database: codejobs
+      sessionDatabase: nodesessions
 
 stage: &stage
   <<: *default
