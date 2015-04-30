@@ -3,12 +3,14 @@
 var config = require('./lib/config');
 var availableLanguages = config().languages.list.join('|');
 var defaultController;
+var apiController;
 var homeController;
 var twitterController;
 
 module.exports = function(app) {
   defaultController = require('./controllers/' + config().controllers.default);
-  homeController = require('./controllers/home');
+  apiController     = require('./controllers/api');
+  homeController    = require('./controllers/home');
   twitterController = require('./controllers/twitter');
 
   // Load necessary helpers
@@ -41,6 +43,7 @@ module.exports = function(app) {
 
   // Controllers dispatch
   app.use('/', defaultController);
+  app.use('/api', apiController);
   app.use('/twitter', twitterController);
   app.use('/:language(' + availableLanguages + ')', defaultController);
   app.use('/:language(' + availableLanguages + ')/home', homeController);
