@@ -37,6 +37,10 @@
                 <li class="social">
                     <social i18n="globalHeaderVm.i18n"></social>
                 </li>
+
+                <li ng-if="globalHeaderVm.isConnected">
+                    {{ globalHeaderVm.username }}
+                </li>
             </ul>
         </div>
     </div>

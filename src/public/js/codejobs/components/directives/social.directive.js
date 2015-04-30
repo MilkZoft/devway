@@ -7,14 +7,14 @@ define([
 ],
 function(codejobsApp, _, utils) {
   codejobsApp
-    .directive('social', GlobalHeader);
+    .directive('social', Social);
 
-  GlobalHeader.$inject = [
+  Social.$inject = [
     'CONFIG'
   ];
 
-  function GlobalHeader(CONFIG) {
-    var template = CONFIG.baseApp + '/social/social.template.html';
+  function Social(CONFIG) {
+    var template = CONFIG.baseApp + '/directives/templates/social.template.html';
 
     return {
       restrict: 'E',
@@ -31,11 +31,14 @@ function(codejobsApp, _, utils) {
   codejobsApp
     .controller('SocialController', SocialController);
 
-  SocialController.$inject = ['CONFIG'];
+  SocialController.$inject = [
+    'CONFIG'
+  ];
 
   function SocialController(CONFIG) {
     var socialVm = this;
 
+    // Properties
     socialVm.likes         = CONFIG.facebook.likes;
     socialVm.fbCounter     = CONFIG.facebook.counter;
     socialVm.followers     = CONFIG.twitter.followers;
@@ -44,8 +47,10 @@ function(codejobsApp, _, utils) {
     socialVm.ytCounter     = CONFIG.youtube.counter;
     socialVm.basePath      = CONFIG.basePath;
 
+    // Methods
     socialVm.linkToNetwork = linkToNetwork;
 
+    // Functions
     function linkToNetwork(obj) {
       return 'https://' + obj.network + '.com/' + CONFIG.socialAccount;
     }
