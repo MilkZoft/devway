@@ -1,21 +1,24 @@
 'use strict';
 
-define(['angular'], function(angular) {
-  var codejobsApp = angular
-    .module('codejobsApp', [
-      'codejobsConstants'
-    ])
-    .config(CodejobsAppConfig);
+define([
+  'angular'
+],
+function(angular) {
+  var codejobsApp = angular.module('codejobsApp', [
+    'codejobsConstants',
+    'codejobs.usersService'
+  ]);
 
-    CodejobsAppConfig.$inject = [
-      'CONFIG',
-      '__',
-      '$interpolateProvider'
-    ];
+  codejobsApp.config(CodejobsAppConfig);
 
-    function CodejobsAppConfig(CONFIG, __, $interpolateProvider) {
-      //$interpolateProvider.startSymbol('[[').endSymbol(']]');
-    }
+  CodejobsAppConfig.$inject = [
+    'CONFIG',
+    '__'
+  ];
+
+  function CodejobsAppConfig(CONFIG, __) {
+
+  }
 
   return codejobsApp;
 });
