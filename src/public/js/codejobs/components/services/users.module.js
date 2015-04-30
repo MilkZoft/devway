@@ -1,10 +1,9 @@
 'use strict';
 
 define([
-  'angular',
-  'restangular'
+  'angular'
 ],
-function(angular, restangular) {
+function(angular) {
   angular
     .module('codejobs.usersService', ['restangular'])
     .factory('codejobsUsersService', CodejobsUsersService);
@@ -14,7 +13,7 @@ function(angular, restangular) {
   function CodejobsUsersService(Restangular) {
     return {
       isConnected: function() {
-        return Restangular.one('api/users/is-connected').get();
+        return Restangular.one('users/is-connected').get();
       }
     };
   }

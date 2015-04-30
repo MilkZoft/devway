@@ -3,6 +3,8 @@
 require(['domReady'], function(domReady) {
   domReady(function() {
     require([
+      'restangular',
+
       // Constants
       'codejobs/codejobs.constants',
 

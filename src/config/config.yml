@@ -3,6 +3,7 @@ production: &default
   serverPort: 2525
   baseUrl: http://www.codejobs.biz
   baseApp: /js/codejobs/components
+  baseApi: /api/
   cookieDomain: .codejobs.biz
   facebook:
     account: codejobs
