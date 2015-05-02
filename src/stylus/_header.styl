@@ -9,8 +9,9 @@ header
     z-index 100
 
     .wrapper
+        $clearfix()
         margin 0 auto
-        min-width 1200px
+        min-width 1280px
         position relative
         width 90%
 
@@ -26,6 +27,7 @@ header
 
             ul
                 $resetUl()
+                $clearfix()
 
                 li
                     display block
@@ -135,3 +137,21 @@ header
 
                             &.youtube
                                 background-color $youtube
+                    &.connect
+                        a
+                            display inline-block
+                            padding 0 13px
+
+                            &.login
+                                color $darkGray
+
+                                &:hover
+                                    color $jobsBlue
+
+                            &.register
+                                color $white
+                                background-color $jobsBlue
+
+                                &:hover
+                                    background-color $darkJobsBlue
+

@@ -1,1 +1,44 @@
+@import '../_mixins'
 @import '_mixins'
+
+@media only screen and (max-width 1024px)
+    header
+        .wrapper
+            min-width 940px
+
+            .menu
+                ul
+                    width 780px
+
+                    li
+                        &.search
+                            $hide()
+
+                        &.social
+                            width 180px
+                            margin-left 80px
+
+                            a
+                                width 60px
+
+                                .counter
+                                    $hide()
+
+@media only screen and (max-width 768px)
+    header
+        .wrapper
+            min-width 700px
+
+            .menu
+                ul
+                    width 535px
+
+                    li
+                        &.search
+                            $hide()
+
+                        &.social
+                            $hide()
+
+                        &.connect
+                            float right

@@ -8,22 +8,22 @@
 
         <div class="menu">
             <ul>
-                <li>
+                <li class="item">
                     <a ng-click="">
                         {{ globalHeaderVm.i18n.menu.topics }}
                         <i class="fa fa-sort-desc"></i>
                     </a>
                 </li>
 
-                <li>
+                <li class="item">
                     <a ng-click="">{{ globalHeaderVm.i18n.menu.aboutUs }}</a>
                 </li>
 
-                <li>
+                <li class="item">
                     <a ng-click="">{{ globalHeaderVm.i18n.menu.advertising }}</a>
                 </li>
 
-                <li>
+                <li class="item">
                     <a ng-click="">{{ globalHeaderVm.i18n.menu.forums }}</a>
                 </li>
 
@@ -38,8 +38,9 @@
                     <social i18n="globalHeaderVm.i18n"></social>
                 </li>
 
-                <li ng-if="globalHeaderVm.isConnected">
-                    {{ globalHeaderVm.username }}
+                <li class="connect" ng-if="!globalHeaderVm.isConnected">
+                    <a class="login" href="{{ globalHeaderVm.basePath }}/users/login">{{ globalHeaderVm.i18n.menu.login }}</a>
+                    <a class="register" href="{{ globalHeaderVm.basePath }}/users/register">{{ globalHeaderVm.i18n.menu.register }}</a>
                 </li>
             </ul>
         </div>
