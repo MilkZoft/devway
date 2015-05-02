@@ -3,6 +3,10 @@
 require(['domReady'], function(domReady) {
   domReady(function() {
     require([
+      // Local scripts
+      'device',
+
+      // Libraries
       'restangular',
 
       // Constants

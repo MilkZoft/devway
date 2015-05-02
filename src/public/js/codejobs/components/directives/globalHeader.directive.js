@@ -2,10 +2,9 @@
 
 define([
   'codejobsApp',
-  'lodash',
-  'utils'
+  'lodash'
 ],
-function(codejobsApp, _, utils) {
+function(codejobsApp, _) {
   codejobsApp
     .directive('globalHeader', GlobalHeader);
 
@@ -55,7 +54,6 @@ function(codejobsApp, _, utils) {
       codejobsUsersService
         .isConnected()
         .then(function(response) {
-          console.log(response);
           globalHeaderVm.isConnected = response.isConnected;
 
           if (response.isConnected) {

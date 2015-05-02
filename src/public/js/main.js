@@ -11,7 +11,6 @@ require.config({
 
     // Local dependencies
     'device': '/js/device',
-    'utils':  '/js/utils',
 
     'codejobsApp': 'codejobs/codejobs.module'
   },
@@ -24,9 +23,6 @@ require.config({
     },
     'jquery': {
       exports: '$'
-    },
-    'utils': {
-      exports: 'utils'
     },
     'domReady': {
       exports: 'domReady'

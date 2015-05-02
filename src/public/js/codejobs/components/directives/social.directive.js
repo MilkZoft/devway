@@ -2,10 +2,9 @@
 
 define([
   'codejobsApp',
-  'lodash',
-  'utils'
+  'lodash'
 ],
-function(codejobsApp, _, utils) {
+function(codejobsApp, _) {
   codejobsApp
     .directive('social', Social);
 
