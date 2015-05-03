@@ -10,10 +10,16 @@ $clearfix()
 $hide()
     display none
 
+$noSelect()
+    touch-callout none
+    user-select none
+
+$pointer()
+    cursor pointer
+
 /* Logo */
 $displayLogo()
-    @extend .no-select
-    color red
+    $noSelect()
     font-size 26px
     margin 0 auto
     text-transform uppercase
@@ -23,12 +29,12 @@ $displayLogo()
         color $darkGray
 
     .jobs
-        color $jobsBlue
+        color $blueCodejobs
         font-weight $fontWeightBold
 
     &:hover
         .code
-            color $jobsBlue
+            color $blueCodejobs
 
         .jobs
             color $darkGray
@@ -37,8 +43,11 @@ $displayLogo()
 $border($size = 1px, $type = solid, $color = red)
     border $size $type $color
 
-$borderRadius($radius = 5px)
-    border-radius $radius
+$borderRadius($topRight = 0px, $bottomRight = 0px, $bottomLeft = 0px, $topLeft = 0px)
+    border-top-right-radius $topRight
+    border-bottom-right-radius $bottomRight
+    border-bottom-left-radius $bottomLeft
+    border-top-left-radius $topLeft
 
 /* BoxShadow */
 $boxShadow($h = 2px, $v = 2px, $blur = 2px, $color = rgba(0, 0, 0, 0.3))
@@ -49,3 +58,14 @@ $resetUl()
     margin 0
     padding 0
     list-style none
+
+/* Images */
+$retina($image, $extension = 'png')
+    background-image url($image'.'$extension)
+
+    @media (min-device-pixel-ratio: 2),
+           (min-device-pixel-ratio: 2),
+           (min-resolution: 192dpi),
+           (min-resolution: 2dppx)
+        background-image url($image'_2x.'$extension)
+        background-size cover
