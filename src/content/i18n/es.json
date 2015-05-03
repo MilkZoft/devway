@@ -9,9 +9,18 @@
     }
   },
   "menu": {
-    "aboutUs": "Nosotros",
-    "advertising": "Publicidad",
-    "forums": "Foros",
+    "aboutUs": {
+      "text": "Nosotros",
+      "title": "Conoce a nuestro equipo"
+    },
+    "advertising": {
+      "text": "Publicidad",
+      "title": "Obtén la mejor publicidad para tu negocio"
+    },
+    "forums": {
+      "text": "Foros",
+      "title": "Aprende y comparte tu conocimiento con la comunidad"
+    },
     "login": {
       "text": "Conectar",
       "title": "Conectar a tu cuenta"
@@ -20,7 +29,10 @@
       "text": "Registro",
       "title": "Crea una nueva cuenta en Codejobs"
     },
-    "topics": "Temas",
+    "topics": {
+      "text": "Temas",
+      "title": "Menu de Temas"
+    },
     "tutorials": {
       "mongo": "Tutoriales de MongoDB",
       "express": "Tutoriales de Express",

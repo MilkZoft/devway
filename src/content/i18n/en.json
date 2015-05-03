@@ -9,9 +9,18 @@
     }
   },
   "menu": {
-    "aboutUs": "About us",
-    "advertising": "Advertising",
-    "forums": "Forums",
+    "about": {
+      "text": "About us",
+      "title": "Know our team"
+    },
+    "advertising": {
+      "text": "Advertising",
+      "title": "Get the best advertising for your business"
+    },
+    "forums": {
+      "text": "Forums",
+      "title": "Learn & share your knowledge with the community"
+    },
     "login": {
       "text": "Log In",
       "title": "Connect to your account"
@@ -20,7 +29,10 @@
       "text": "Register",
       "title": "Create your account in Codejobs"
     },
-    "topics": "Topics",
+    "topics": {
+      "text": "Topics",
+      "title": "Menu of Topics"
+    },
     "tutorials": {
       "mongo": "MongoDB Tutorials",
       "express": "Express Tutorials",
@@ -28,8 +40,8 @@
       "node": "Node.js Tutorials",
       "php": "PHP (Including Frameworks) Tutorials",
       "js": "All JavaScript libraries Tutorials",
-      "html5": "HTML5 Tutorials &amp; Demos",
-      "css3": "CSS3 Tutorials &amp; Demos",
+      "html5": "HTML5 Tutorials & Demos",
+      "css3": "CSS3 Tutorials & Demos",
       "sublime": "Sublime Text Plugins &amp; Tutorials",
       "bootstrap": "Twitter Bootstrap Tutorials",
       "grunt": "Grunt.js Tutorials",
