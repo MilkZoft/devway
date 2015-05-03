@@ -1,13 +1,3 @@
-.pointer
-    cursor pointer
-
-.hide
-    display none
-
-.no-select
-    touch-callout none
-    user-select none
-
 html
     height 100%
 
@@ -18,8 +8,9 @@ body
     width 100%
 
     a
-        cursor pointer
+        $pointer()
+        color $darkGray
         text-decoration none
 
         &:hover
-            color $jobsBlue
+            color $blueCodejobs

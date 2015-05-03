@@ -41,6 +41,170 @@ header
                             position absolute
                             left 45px
                             top 0
+
+                    &.topics
+                        &:hover
+                            ul
+                                &.sub-menu
+                                    display block
+                                    opacity 1
+                                    z-index 100
+
+                        ul
+                            &.sub-menu
+                                $borderRadius(0, 5px, 5px, 0)
+                                $boxShadow(0px, 2px, 3px)
+                                display none
+                                background-color $white
+                                left 0
+                                opacity 0
+                                position absolute
+                                top 100%
+                                transition opacity linear 0.15s
+                                width 160px
+                                z-index -1
+
+                                li
+                                    display block
+                                    margin 0
+                                    position relative
+                                    text-indent 10px
+                                    width 100%
+
+                                    a
+                                        display block
+
+                                        i.icon
+                                            background-repeat no-repeat
+                                            display block
+                                            height 40px
+                                            margin-left 65px
+                                            margin-top 6px
+                                            width 40px
+
+                                        &.mongo
+                                            color $brownMongo
+
+                                            &:hover
+                                                background-color $brownMongo
+
+                                                i.icon
+                                                    $retina('../images/icons/mongodb')
+
+                                        &.express
+                                            color $grayExpress
+
+                                            &:hover
+                                                background-color $grayExpress
+
+                                                i.icon
+                                                    $retina('../images/icons/express')
+
+                                        &.angular
+                                            color $redAngular
+
+                                            &:hover
+                                                background-color $redAngular
+
+                                                i.icon
+                                                    $retina('../images/icons/angular')
+
+                                        &.node
+                                            color $greenNode
+
+                                            &:hover
+                                                background-color $greenNode
+
+                                                i.icon
+                                                    $retina('../images/icons/node')
+
+                                        &.php
+                                            color $purplePHP
+
+                                            &:hover
+                                                background-color $purplePHP
+
+                                                i.icon
+                                                    $retina('../images/icons/php')
+
+                                        &.js
+                                            color $yellowJS
+
+                                            &:hover
+                                                background-color $yellowJS
+
+                                                i.icon
+                                                    $retina('../images/icons/js')
+
+                                        &.html5
+                                            color $orangeHTML5
+
+                                            &:hover
+                                                background-color $orangeHTML5
+
+                                                i.icon
+                                                    $retina('../images/icons/html5')
+
+                                        &.css3
+                                            color $blueCSS3
+
+                                            &:hover
+                                                background-color $blueCSS3
+
+                                                i.icon
+                                                    $retina('../images/icons/css3')
+
+                                        &.sublime
+                                            color $yellowSublime
+
+                                            &:hover
+                                                background-color $yellowSublime
+
+                                                i.icon
+                                                    $retina('../images/icons/sublime')
+
+                                        &.bootstrap
+                                            color $purpleBootstrap
+
+                                            &:hover
+                                                background-color $purpleBootstrap
+
+                                                i.icon
+                                                    $retina('../images/icons/bootstrap')
+
+
+                                        &.grunt
+                                            color $yellowGrunt
+
+                                            &:hover
+                                                background-color $yellowGrunt
+
+                                                i.icon
+                                                    $retina('../images/icons/grunt')
+
+                                        &.docker
+                                            color $blueDocker
+
+                                            &:hover
+                                                background-color $blueDocker
+
+                                                i.icon
+                                                    $retina('../images/icons/docker')
+
+                                        &.vagrant
+                                            color $blueVagrant
+
+                                            &:hover
+                                                $borderRadius(0, 5px, 5px, 0)
+                                                background-color $blueVagrant
+
+                                                i.icon
+                                                    $retina('../images/icons/vagrant')
+
+                                        &:hover
+                                            color $white
+
+
                     &.search
                         background-color $white
                         display block
@@ -60,7 +224,6 @@ header
                                 display block
 
                         input
-
                             background-color $white
                             border none
                             color #999
@@ -123,20 +286,20 @@ header
                                 color $white
                                 display block
                                 font-size 30px
+                                left 0
                                 line-height 52px
                                 position absolute
-                                left 0
                                 text-align center
                                 width 55px
 
                             &.facebook
-                                background-color $facebook
+                                background-color $blueFacebook
 
                             &.twitter
-                                background-color $twitter
+                                background-color $blueTwitter
 
                             &.youtube
-                                background-color $youtube
+                                background-color $redYoutube
                     &.connect
                         a
                             display inline-block
@@ -146,12 +309,12 @@ header
                                 color $darkGray
 
                                 &:hover
-                                    color $jobsBlue
+                                    color $blueCodejobs
 
                             &.register
                                 color $white
-                                background-color $jobsBlue
+                                background-color $blueCodejobs
 
                                 &:hover
-                                    background-color $darkJobsBlue
+                                    background-color $darkBlueCodejobs
 
