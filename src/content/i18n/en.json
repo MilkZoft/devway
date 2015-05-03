@@ -12,9 +12,30 @@
     "aboutUs": "About us",
     "advertising": "Advertising",
     "forums": "Forums",
-    "login": "Login",
-    "register": "Register",
-    "topics": "Topics"
+    "login": {
+      "text": "Log In",
+      "title": "Connect to your account"
+    },
+    "register": {
+      "text": "Register",
+      "title": "Create your account in Codejobs"
+    },
+    "topics": "Topics",
+    "tutorials": {
+      "mongo": "MongoDB Tutorials",
+      "express": "Express Tutorials",
+      "angular": "Angular.js Tutorials",
+      "node": "Node.js Tutorials",
+      "php": "PHP (Including Frameworks) Tutorials",
+      "js": "All JavaScript libraries Tutorials",
+      "html5": "HTML5 Tutorials &amp; Demos",
+      "css3": "CSS3 Tutorials &amp; Demos",
+      "sublime": "Sublime Text Plugins &amp; Tutorials",
+      "bootstrap": "Twitter Bootstrap Tutorials",
+      "grunt": "Grunt.js Tutorials",
+      "docker": "Create Virtual Machines with Docker for your projects",
+      "vagrant": "Create Virtual Machines with Vagrant for your projects"
+    }
   },
   "social" : {
     "facebook": {
