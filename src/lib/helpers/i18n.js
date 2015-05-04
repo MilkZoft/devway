@@ -29,5 +29,15 @@ module.exports = {
     } else {
       return config().languages.default;
     }
+  },
+
+  getLanguagePath: function(url) {
+    var params = utils.getParamsFromUrl(url);
+
+    if (_.contains(config().languages.list, params[0])) {
+      return '/' + params[0];
+    } else {
+      return '';
+    }
   }
 };

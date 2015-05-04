@@ -21,7 +21,7 @@ module.exports = function(app) {
   app.use(function(req, res, next) {
     res.locals.isConnected = true;
     res.locals.isMobile = utils.isMobile(req.headers['user-agent']);
-    res.locals.config.basePath = config().baseUrl + '/' + i18n.getCurrentLanguage(req.url);
+    res.locals.config.basePath = config().baseUrl + i18n.getLanguagePath(req.url);
     res.locals.currentLanguage = i18n.getCurrentLanguage(req.url);
     res.locals.__ = i18n.load(i18n.getCurrentLanguage(req.url));
     res.locals.basePath = res.locals.config.basePath;
@@ -43,9 +43,10 @@ module.exports = function(app) {
 
   // Controllers dispatch
   app.use('/', defaultController);
+  app.use('/:language(' + availableLanguages + ')', defaultController);
   app.use('/api', apiController);
   app.use('/twitter', twitterController);
-  app.use('/:language(' + availableLanguages + ')', defaultController);
+  app.use('/home', homeController);
   app.use('/:language(' + availableLanguages + ')/home', homeController);
 
   // catch 404 and forward to error handler

@@ -46,8 +46,8 @@ production: &default
     blog:
       postPerPage: 12
   languages:
-    default: es
-    list: [en, es, fr, pt, ge, jp, ch]
+    default: en
+    list: [es]
   security:
     secret: co3j0bs.biz
   database:
