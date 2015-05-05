@@ -1,29 +1,32 @@
 'use strict';
 
-define([
-  'angular'
-],
-function(angular) {
-  var codejobsApp = angular.module('codejobsApp', [
-    'codejobsConstants',
+define(function() {
+  // Loading dependencies
+  require([
     'restangular',
-    'codejobs.usersService'
+    'codejobs/codejobs.controller',
+    'codejobs/components/directives/globalHeader.directive',
+    'codejobs/components/directives/social.directive'
+  ], function() {
+    angular.bootstrap(document, ['codejobsApp']);
+  });
+
+  var codejobsApp = angular.module('codejobsApp', [
+    'codejobsConstants'
   ]);
 
   codejobsApp.config(CodejobsAppConfig);
 
   CodejobsAppConfig.$inject = [
     'CONFIG',
-    '__',
-    'RestangularProvider'
+    '__'
   ];
 
-  function CodejobsAppConfig(CONFIG, __, RestangularProvider) {
-    RestangularProvider.setBaseUrl(CONFIG.baseApi);
-    RestangularProvider.setDefaultHttpFields({
-      withCredentials: true
-    });
+  function CodejobsAppConfig(CONFIG, __) {
+    console.log(CONFIG);
   }
 
-  return codejobsApp;
+  codejobsApp.run(['$log', function($log) {
+    $log.info('Initialized the codejobsApp');
+  }]);
 });

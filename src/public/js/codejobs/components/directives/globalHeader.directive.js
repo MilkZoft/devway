@@ -1,10 +1,8 @@
 'use strict';
 
-define([
-  'codejobsApp',
-  'lodash'
-],
-function(codejobsApp, _) {
+define(function() {
+  var codejobsApp = angular.module('codejobsApp');
+
   codejobsApp
     .directive('globalHeader', GlobalHeader);
 
@@ -31,11 +29,10 @@ function(codejobsApp, _) {
     .controller('GlobalHeaderController', GlobalHeaderController);
 
   GlobalHeaderController.$inject = [
-    'CONFIG',
-    'codejobsUsersService'
+    'CONFIG'
   ];
 
-  function GlobalHeaderController(CONFIG, codejobsUsersService) {
+  function GlobalHeaderController(CONFIG) {
     var globalHeaderVm = this;
 
     // Properties
@@ -50,18 +47,10 @@ function(codejobsApp, _) {
     // Functions
     function isConnected() {
       globalHeaderVm.isConnected = false;
-
-      codejobsUsersService
-        .isConnected()
-        .then(function(response) {
-          globalHeaderVm.isConnected = response.isConnected;
-
-          if (response.isConnected) {
-            globalHeaderVm.networkId = response.user.networkId;
-            globalHeaderVm.username  = response.user.username;
-            globalHeaderVm.avatar    = response.user.avatar;
-          }
-        });
     }
   }
+
+  codejobsApp.run(['$log', function($log) {
+    $log.info('Inside GlobalHeader Directive');
+  }]);
 });

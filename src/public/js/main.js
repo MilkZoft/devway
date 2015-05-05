@@ -3,11 +3,10 @@
 require.config({
   paths: {
     // General dependencies
-    'domReady':    '/bower_components/requirejs-domready/domReady',
-    'angular':     '/bower_components/angular/angular.min',
+    'angular': '/bower_components/angular/angular.min',
+    'jquery':  '/bower_components/jquery/dist/jquery.min',
+    'lodash': '/bower_components/lodash/dist/lodash.min',
     'restangular': '/bower_components/restangular/dist/restangular.min',
-    'lodash':      '/bower_components/lodash/dist/lodash.min',
-    'jquery':      '/bower_components/jquery/dist/jquery.min',
 
     // Local dependencies
     'device': '/js/device',
@@ -16,16 +15,32 @@ require.config({
   },
   shim: {
     'angular': {
+      deps: ['jquery'],
       exports: 'angular'
     },
-    'lodash': {
-      exports: '_'
-    },
+
     'jquery': {
       exports: '$'
     },
-    'domReady': {
-      exports: 'domReady'
+
+    'lodash': {
+      exports: '_'
+    },
+
+    'restangular': {
+      deps: ['angular'],
+      exports: 'restangular'
+    },
+
+    'codejobsApp': {
+      deps: ['angular']
     }
   }
 });
+
+require([
+  'restangular',
+  'device',
+  'codejobs/codejobs.constants',
+  'codejobsApp'
+]);

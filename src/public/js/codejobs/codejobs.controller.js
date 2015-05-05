@@ -1,8 +1,9 @@
 'use strict';
 
-define(['codejobsApp'], function(codejobsApp) {
-  codejobsApp
-    .controller('CodejobsAppController', CodejobsAppController);
+define(function() {
+  var codejobsApp = angular.module('codejobsApp');
+
+  codejobsApp.controller('CodejobsAppController', CodejobsAppController);
 
   CodejobsAppController.$inject = [
     '$scope',
@@ -14,4 +15,8 @@ define(['codejobsApp'], function(codejobsApp) {
 
     vm.__ = __;
   }
+
+  codejobsApp.run(['$log', function($log) {
+    $log.info('Inside CodejobsAppController');
+  }]);
 });

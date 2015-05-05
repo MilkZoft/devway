@@ -1,11 +1,11 @@
 'use strict';
 
-define([
-  'angular'
-],
-function(angular) {
-  angular
-    .module('codejobs.usersService', ['restangular'])
+define(['angular'], function(angular) {
+  var codejobsUsersService = angular.module('codejobsConstants', [
+    'restangular'
+  ]);
+
+  codejobsUsersService
     .factory('codejobsUsersService', CodejobsUsersService);
 
   CodejobsUsersService.$inject = ['Restangular'];
@@ -17,4 +17,8 @@ function(angular) {
       }
     };
   }
+
+  codejobsUsersService.run(['$log', function($log) {
+    $log.info('Inside Users Service');
+  }]);
 });
