@@ -1,14 +1,16 @@
 'use strict';
 
 define(['angular'], function(angular) {
-  var codejobsUsersService = angular.module('codejobsConstants', [
+  var codejobsUsersService = angular.module('codejobs.usersService', [
     'restangular'
   ]);
 
   codejobsUsersService
     .factory('codejobsUsersService', CodejobsUsersService);
 
-  CodejobsUsersService.$inject = ['Restangular'];
+  CodejobsUsersService.$inject = [
+    'Restangular'
+  ];
 
   function CodejobsUsersService(Restangular) {
     return {

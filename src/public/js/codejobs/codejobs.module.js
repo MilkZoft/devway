@@ -5,15 +5,21 @@ define(function() {
   require([
     'restangular',
     'codejobs/codejobs.controller',
+
+    // Directives
     'codejobs/components/directives/globalHeader.directive',
-    'codejobs/components/directives/social.directive'
+    'codejobs/components/directives/social.directive',
+
+    // Services
+    'codejobs/components/services/users.module'
   ], function() {
     angular.bootstrap(document, ['codejobsApp']);
   });
 
   var codejobsApp = angular.module('codejobsApp', [
     'codejobsConstants',
-    'restangular'
+    'restangular',
+    'codejobs.usersService'
   ]);
 
   codejobsApp.config(CodejobsAppConfig);

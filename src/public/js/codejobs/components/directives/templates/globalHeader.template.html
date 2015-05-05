@@ -95,6 +95,10 @@
                     <a tabindex="23" title="{{ globalHeaderVm.i18n.menu.login.title }}" class="login" href="{{ globalHeaderVm.basePath }}/users/login">{{ globalHeaderVm.i18n.menu.login.text }}</a>
                     <a tabindex="24" title="{{ globalHeaderVm.i18n.menu.register.title }}" class="register" href="{{ globalHeaderVm.basePath }}/users/register">{{ globalHeaderVm.i18n.menu.register.text }}</a>
                 </li>
+
+                <li class="connected" ng-if="globalHeaderVm.isConnected">
+                    {{ globalHeaderVm.username }}
+                </li>
             </ul>
         </div>
     </div>

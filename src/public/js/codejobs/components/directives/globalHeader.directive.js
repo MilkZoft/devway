@@ -29,10 +29,11 @@ define(function() {
     .controller('GlobalHeaderController', GlobalHeaderController);
 
   GlobalHeaderController.$inject = [
-    'CONFIG'
+    'CONFIG',
+    'codejobsUsersService'
   ];
 
-  function GlobalHeaderController(CONFIG) {
+  function GlobalHeaderController(CONFIG, codejobsUsersService) {
     var globalHeaderVm = this;
 
     // Properties
@@ -47,6 +48,18 @@ define(function() {
     // Functions
     function isConnected() {
       globalHeaderVm.isConnected = false;
+
+      codejobsUsersService
+        .isConnected()
+        .then(function(response) {
+          globalHeaderVm.isConnected = response.isConnected;
+
+          if (response.isConnected) {
+            globalHeaderVm.networkId = response.user.networkId;
+            globalHeaderVm.username  = response.user.username;
+            globalHeaderVm.avatar    = response.user.avatar;
+          }
+        });
     }
   }
 
