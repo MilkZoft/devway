@@ -20,11 +20,15 @@ define(function() {
 
   CodejobsAppConfig.$inject = [
     'CONFIG',
-    '__'
+    '__',
+    'RestangularProvider'
   ];
 
-  function CodejobsAppConfig(CONFIG, __) {
-
+  function CodejobsAppConfig(CONFIG, __, RestangularProvider) {
+    RestangularProvider.setBaseUrl(CONFIG.baseApi);
+    RestangularProvider.setDefaultHttpFields({
+      withCredentials: true
+    });
   }
 
   codejobsApp.run(['$log', function($log) {
