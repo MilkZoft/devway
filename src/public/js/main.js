@@ -42,6 +42,5 @@ require.config({
 
 require([
   'device',
-  'codejobs/codejobs.constants',
   'codejobsApp'
 ]);

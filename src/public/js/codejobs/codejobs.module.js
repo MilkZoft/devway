@@ -4,6 +4,7 @@ define(function() {
   // Loading dependencies
   require([
     'restangular',
+    'codejobs/codejobs.constants',
     'codejobs/codejobs.controller',
 
     // Directives
