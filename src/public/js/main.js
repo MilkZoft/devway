@@ -13,6 +13,9 @@ require.config({
 
     'codejobsApp': 'codejobs/codejobs.module'
   },
+
+  priority: ['angular'],
+
   shim: {
     'angular': {
       deps: ['jquery'],
@@ -28,8 +31,7 @@ require.config({
     },
 
     'restangular': {
-      deps: ['angular'],
-      exports: 'restangular'
+      deps: ['angular', 'lodash'],
     },
 
     'codejobsApp': {
@@ -39,7 +41,6 @@ require.config({
 });
 
 require([
-  'restangular',
   'device',
   'codejobs/codejobs.constants',
   'codejobsApp'

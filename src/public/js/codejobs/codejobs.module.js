@@ -12,7 +12,8 @@ define(function() {
   });
 
   var codejobsApp = angular.module('codejobsApp', [
-    'codejobsConstants'
+    'codejobsConstants',
+    'restangular'
   ]);
 
   codejobsApp.config(CodejobsAppConfig);
@@ -23,7 +24,7 @@ define(function() {
   ];
 
   function CodejobsAppConfig(CONFIG, __) {
-    console.log(CONFIG);
+
   }
 
   codejobsApp.run(['$log', function($log) {
