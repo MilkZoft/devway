@@ -34,9 +34,7 @@ module.exports = function(app) {
       '/css/style.css'
     ];
 
-    res.locals.js = [
-      'autoloader'
-    ];
+    res.locals.js = [];
 
     next();
   });

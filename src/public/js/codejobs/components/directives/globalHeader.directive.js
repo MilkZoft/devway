@@ -1,10 +1,8 @@
 'use strict';
 
-define([
-  'codejobsApp',
-  'lodash'
-],
-function(codejobsApp, _) {
+define(function() {
+  var codejobsApp = angular.module('codejobsApp');
+
   codejobsApp
     .directive('globalHeader', GlobalHeader);
 
@@ -64,4 +62,8 @@ function(codejobsApp, _) {
         });
     }
   }
+
+  codejobsApp.run(['$log', function($log) {
+    $log.info('Inside GlobalHeader Directive');
+  }]);
 });

@@ -1,10 +1,8 @@
 'use strict';
 
-define([
-  'codejobsApp',
-  'lodash'
-],
-function(codejobsApp, _) {
+define(function() {
+  var codejobsApp = angular.module('codejobsApp');
+
   codejobsApp
     .directive('social', Social);
 
@@ -54,4 +52,8 @@ function(codejobsApp, _) {
       return 'https://' + obj.network + '.com/' + CONFIG.socialAccount;
     }
   }
+
+  codejobsApp.run(['$log', function($log) {
+    $log.info('Inside Social Directive');
+  }]);
 });

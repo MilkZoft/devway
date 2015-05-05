@@ -22,15 +22,14 @@
     </head>
 
     <body>
-        <div ng-app="codejobsApp">
-            <div ng-controller="CodejobsAppController as vm">
-                <global-header
-                    i18n="vm.__">
-                </global-header>
+        <div ng-controller="CodejobsAppController as vm">
+            <global-header
+                i18n="vm.__">
+            </global-header>
 
-                {{> content }}
-                {{> scripts }}
-            </div>
+            {{> content }}
         </div>
+
+        {{> scripts }}
     </body>
 </html>
