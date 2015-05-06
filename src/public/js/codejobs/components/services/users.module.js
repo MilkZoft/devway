@@ -1,6 +1,6 @@
 'use strict';
 
-define(['angular'], function(angular) {
+define(function() {
   var codejobsUsersService = angular.module('codejobs.usersService', [
     'restangular'
   ]);
