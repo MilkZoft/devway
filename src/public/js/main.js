@@ -11,7 +11,7 @@ require.config({
     // Local dependencies
     'device': '/js/device',
 
-    'codejobsApp': 'codejobs/codejobs.module'
+    'devwayApp': 'devway/devway.module'
   },
 
   priority: ['angular'],
@@ -34,7 +34,7 @@ require.config({
       deps: ['angular', 'lodash'],
     },
 
-    'codejobsApp': {
+    'devwayApp': {
       deps: ['angular']
     }
   }
@@ -42,5 +42,5 @@ require.config({
 
 require([
   'device',
-  'codejobsApp'
+  'devwayApp'
 ]);

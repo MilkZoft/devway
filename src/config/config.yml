@@ -1,25 +1,25 @@
 ---
 production: &default
   serverPort: 2525
-  baseUrl: http://www.codejobs.biz
-  baseApp: /js/codejobs/components
+  baseUrl: http://www.developerway.com
+  baseApp: /js/devway/components
   baseApi: /api/
-  cookieDomain: .codejobs.biz
+  cookieDomain: .developerway.com
   facebook:
-    account: codejobs
+    account: deveway
     likes: 12K
     counter: '12,000'
     clientId: 324953487621707
     clientSecret: 77d85e535c01319c86f4b150bbf87f8a
   twitter:
-    account: codejobs
+    account: deveway
     followers: 80K
     counter: '80,345'
     consumerKey: D9xH0f9na6cL4oTWPldZRA
     consumerSecret: tvodkw52PiJEVxS7XskLCXeH94qnGtNdHNFbNdsUTr4
     accessToken: 461804603-uAtAvzW2EPTk5pl9O4fN9UXKTJ11fVba1ObYLbTU
     accessTokenSecret: 6xRUpNVpZLtnN3HAbEV4ZZopdU4wLcJ0TUvFTO2RaeRES
-    callbackUrl: http://local.codejobs.biz/twitter/callback
+    callbackUrl: http://local.developerway.com/twitter/callback
     requestTokenUrl: https://api.twitter.com/oauth/request_token
     accessTokenUrl: https://api.twitter.com/oauth/access_token
     authenticateUrl: https://twitter.com/oauth/authenticate
@@ -27,10 +27,10 @@ production: &default
     APIVersion: 1.0A
     signMethod: HMAC-SHA1
   youtube:
-    account: codejobs
+    account: deveway
     subscribers: 42K
     counter: '42,000'
-  socialAccount: codejobs
+  socialAccount: deveway
   views:
     minify: true
     stylusPrecompile: true
@@ -49,32 +49,32 @@ production: &default
     default: en
     list: [es]
   security:
-    secret: co3j0bs.biz
+    secret: d3vel0perw4y.com
   database:
     mysql:
       host: 127.0.0.1
       user: root
       password:
-      database: codejobs
+      database: developerway
       port: 3306
       debug: true
       socket: /var/mysql/mysql.sock
     mongodb:
       uri: mongodb://localhost:27017/
-      database: codejobs
+      database: developerway
       sessionDatabase: nodesessions
 
 stage: &stage
   <<: *default
-  baseUrl: http://stage.codejobs.biz
+  baseUrl: http://stage.developerway.com
 
 latest: &latest
   <<: *stage
-  baseUrl: http://latest.codejobs.biz
+  baseUrl: http://latest.developerway.com
 
 development:
   <<: *latest
-  baseUrl: http://local.codejobs.biz
+  baseUrl: http://local.developerway.com
   views:
     minify: false
     stylusPrecompile: false

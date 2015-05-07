@@ -4,46 +4,12 @@ $changeBodyColor($color)
     body
         background-color $color
 
-$removeHeaderOptions()
-    header
-        .header-menu
-            display none
-        .header-connect
-            display none
-
 $centerLogo()
     header
-        .header-wrapper
-            .logo
-                float none
-                margin 0 auto
-    footer
-        .copyright
+        .wrapper
             .logo
                 float none
                 margin 0 auto
 
-$displayDeviceMenu($fontSize = 14px, $height = 26px)
-    .show-nav
-        nav
-            display block
-    .site-wrap
-        .device-menu-link
-            display block
-        nav
-            ul
-                li
-                    a
-                        font-size $fontSize
-                        height $height
-                        line-height $height
-
-$modifyDeviceMenuSize($fontSize = 14px, $height = 26px)
-    .site-wrap
-        nav
-            ul
-                li
-                    a
-                        font-size $fontSize
-                        height $height
-                        line-height $height
+            .connect
+                display none

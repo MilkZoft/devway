@@ -1,0 +1,169 @@
+.sidebar
+    float left
+    height 100%
+    width 10%
+
+    .menu
+        ul
+            $resetUl()
+            min-width 190px
+
+            li
+                display block
+                margin 0
+                position relative
+                text-indent 10px
+                width 100%
+
+                a
+                    display block
+                    background-color $white
+                    height 50px
+                    line-height 50px
+
+                    i.icon
+                        opacity 0.2
+                        background-repeat no-repeat
+                        display block
+                        height 40px
+                        line-height 40px
+                        margin-left 150px
+                        margin-top -45px
+                        width 40px
+
+                    &.mongo
+                        color $brownMongo
+
+                        i.icon
+                            $retina('../images/icons/mongodb')
+
+                        &:hover
+                        &.active
+                            background-color $brownMongo
+
+                    &.express
+                        color $grayExpress
+
+                        i.icon
+                            $retina('../images/icons/express')
+
+                        &:hover
+                        &.active
+                            background-color $grayExpress
+
+                    &.angular
+                        color $redAngular
+
+                        i.icon
+                            $retina('../images/icons/angular')
+
+                        &:hover
+                        &.active
+                            background-color $redAngular
+
+                    &.node
+                        color $greenNode
+
+                        i.icon
+                            $retina('../images/icons/node')
+
+                        &:hover
+                        &.active
+                            background-color $greenNode
+
+                    &.php
+                        color $purplePHP
+
+                        i.icon
+                            $retina('../images/icons/php')
+
+                        &:hover
+                        &.active
+                            background-color $purplePHP
+
+                    &.js
+                        color $yellowJS
+
+                        i.icon
+                            $retina('../images/icons/js')
+
+                        &:hover
+                        &.active
+                            background-color $yellowJS
+
+                    &.html5
+                        color $orangeHTML5
+
+                        i.icon
+                            $retina('../images/icons/html5')
+
+                        &:hover
+                        &.active
+                            background-color $orangeHTML5
+
+                    &.css3
+                        color $blueCSS3
+
+                        i.icon
+                            $retina('../images/icons/css3')
+
+                        &:hover
+                        &.active
+                            background-color $blueCSS3
+
+                    &.sublime
+                        color $yellowSublime
+
+                        i.icon
+                            $retina('../images/icons/sublime')
+
+                        &:hover
+                        &.active
+                            background-color $yellowSublime
+
+                    &.bootstrap
+                        color $purpleBootstrap
+
+                        i.icon
+                            $retina('../images/icons/bootstrap')
+
+                        &:hover
+                        &.active
+                            background-color $purpleBootstrap
+
+                    &.grunt
+                        color $yellowGrunt
+
+                        i.icon
+                            $retina('../images/icons/grunt')
+
+                        &:hover
+                        &.active
+                            background-color $yellowGrunt
+
+                    &.docker
+                        color $blueDocker
+
+                        i.icon
+                            $retina('../images/icons/docker')
+
+                        &:hover
+                        &.active
+                            background-color $blueDocker
+
+                    &.vagrant
+                        color $blueVagrant
+
+                        i.icon
+                            $retina('../images/icons/vagrant')
+
+                        &:hover
+                        &.active
+                            background-color $blueVagrant
+
+                    &:hover
+                    &.active
+                        color $white
+
+                        i.icon
+                            opacity 1
