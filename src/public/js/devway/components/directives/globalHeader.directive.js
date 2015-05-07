@@ -1,6 +1,6 @@
 'use strict';
 
-define(function() {
+define(['jquery'], function($) {
   var devwayApp = angular.module('devwayApp');
 
   devwayApp
@@ -41,6 +41,7 @@ define(function() {
 
     // Methods
     globalHeaderVm.isConnected = isConnected;
+    globalHeaderVm.modal = modal;
 
     // Invoking functions
     globalHeaderVm.isConnected();
@@ -60,6 +61,33 @@ define(function() {
             globalHeaderVm.avatar    = response.user.avatar;
           }
         });
+    }
+
+    function modal(modal) {
+      $('.modal').show();
+
+      if (modal.type === 'login') {
+        $('.register-modal').removeClass('slidedown').addClass('slideup');
+
+        if ($('.login-modal').hasClass('slideup')) {
+          $('.login-modal').removeClass('slideup').addClass('slidedown');
+        } else {
+          $('.login-modal').removeClass('slidedown').addClass('slideup');
+        }
+      } else {
+        $('.login-modal').removeClass('slidedown').addClass('slideup');
+
+        if ($('.register-modal').hasClass('slideup')) {
+          $('.register-modal').removeClass('slideup').addClass('slidedown');
+        } else {
+          $('.register-modal').removeClass('slidedown').addClass('slideup');
+        }
+      }
+
+      $('.close').on('click', function() {
+        $('.register-modal').removeClass('slidedown').addClass('slideup');
+        $('.login-modal').removeClass('slidedown').addClass('slideup');
+      });
     }
   }
 

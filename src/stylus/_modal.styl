@@ -1,0 +1,46 @@
+.slideup
+.slidedown
+    max-height 0
+    overflow-y hidden
+    transition max-height 0.3s ease-in-out, box-shadow 0.6s linear
+
+.slidedown
+    display block
+    max-height 400px
+
+.modal
+    display none
+
+    .users-modal
+        $noSelect()
+        background-color $white
+        color $darkGray
+        height 400px
+        position absolute
+        right 0
+        width 100%
+        z-index 9999
+
+        .close
+            display block
+            float right
+            font-size 30px
+            padding 40px
+
+        &.login-modal
+            &.closed
+                display none
+                max-height 0
+
+        &.register-modal
+            background-color #0085de
+
+            a
+                color $white
+
+                &:hover
+                    color $darkGray
+
+            &.closed
+                display none
+                max-height 0

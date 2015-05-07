@@ -11,6 +11,7 @@ $hide()
     display none
 
 $noSelect()
+    outline none
     touch-callout none
     user-select none
 
@@ -19,24 +20,26 @@ $pointer()
 
 /* Logo */
 $displayLogo()
-    $noSelect()
     font-size 26px
     margin 0 auto
     text-transform uppercase
     width 202px
 
-    .code
+    a
+        $noSelect()
+
+    .developer
         color $darkGray
 
-    .jobs
-        color $blueCodejobs
+    .way
+        color $blueDevWay
         font-weight $fontWeightBold
 
     &:hover
-        .code
-            color $blueCodejobs
+        .developer
+            color $blueDevWay
 
-        .jobs
+        .way
             color $darkGray
 
 /* Borders */

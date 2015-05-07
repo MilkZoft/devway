@@ -9,7 +9,6 @@ define(function() {
 
     // Directives
     'devway/components/directives/globalHeader.directive',
-    'devway/components/directives/social.directive',
 
     // Services
     'devway/components/services/users.module'

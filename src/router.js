@@ -6,12 +6,14 @@ var defaultController;
 var apiController;
 var homeController;
 var twitterController;
+var usersController;
 
 module.exports = function(app) {
   defaultController = require('./controllers/' + config().controllers.default);
   apiController     = require('./controllers/api');
   homeController    = require('./controllers/home');
   twitterController = require('./controllers/twitter');
+  usersController = require('./controllers/users');
 
   // Load necessary helpers
   var i18n = require('./lib/helpers/i18n');
@@ -45,7 +47,7 @@ module.exports = function(app) {
   app.use('/api', apiController);
   app.use('/twitter', twitterController);
   app.use('/home', homeController);
-  app.use('/:language(' + availableLanguages + ')/home', homeController);
+  app.use('/users', usersController);
 
   // catch 404 and forward to error handler
   app.use(function(req, res, next) {
