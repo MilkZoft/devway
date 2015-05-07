@@ -2,9 +2,9 @@
   "apps" : [{
     "name"          : "CLIENT",
     "script"        : "./src/app.js",
-    "port"          : "2222",
+    "port"          : "2525",
     "watch"         : "./src",
-    "ignore_watch"  : ["./src/less", "./src/public"],
+    "ignore_watch"  : ["./src/stylus", "./src/public"],
     "watch_options" : {
       "usePolling"  : true
     },
