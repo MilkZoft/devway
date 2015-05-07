@@ -1,9 +1,9 @@
 'use strict';
 
 define(function() {
-  var codejobsApp = angular.module('codejobsApp');
+  var devwayApp = angular.module('devwayApp');
 
-  codejobsApp
+  devwayApp
     .directive('globalHeader', GlobalHeader);
 
   GlobalHeader.$inject = [
@@ -25,12 +25,12 @@ define(function() {
     };
   }
 
-  codejobsApp
+  devwayApp
     .controller('GlobalHeaderController', GlobalHeaderController);
 
   GlobalHeaderController.$inject = [
     'CONFIG',
-    'codejobsUsersService'
+    'devwayUsersService'
   ];
 
   function GlobalHeaderController(CONFIG, codejobsUsersService) {
@@ -63,7 +63,7 @@ define(function() {
     }
   }
 
-  codejobsApp.run(['$log', function($log) {
+  devwayApp.run(['$log', function($log) {
     $log.info('Inside GlobalHeader Directive');
   }]);
 });

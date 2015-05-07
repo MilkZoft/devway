@@ -1,9 +1,9 @@
 'use strict';
 
 define(function() {
-  var codejobsApp = angular.module('codejobsApp');
+  var devwayApp = angular.module('devwayApp');
 
-  codejobsApp
+  devwayApp
     .directive('social', Social);
 
   Social.$inject = [
@@ -25,7 +25,7 @@ define(function() {
     };
   }
 
-  codejobsApp
+  devwayApp
     .controller('SocialController', SocialController);
 
   SocialController.$inject = [
@@ -36,13 +36,7 @@ define(function() {
     var socialVm = this;
 
     // Properties
-    socialVm.likes         = CONFIG.facebook.likes;
-    socialVm.fbCounter     = CONFIG.facebook.counter;
-    socialVm.followers     = CONFIG.twitter.followers;
-    socialVm.twCounter     = CONFIG.twitter.counter;
-    socialVm.subscribers   = CONFIG.youtube.subscribers;
-    socialVm.ytCounter     = CONFIG.youtube.counter;
-    socialVm.basePath      = CONFIG.basePath;
+    socialVm.basePath = CONFIG.basePath;
 
     // Methods
     socialVm.linkToNetwork = linkToNetwork;
@@ -53,7 +47,7 @@ define(function() {
     }
   }
 
-  codejobsApp.run(['$log', function($log) {
+  devwayApp.run(['$log', function($log) {
     $log.info('Inside Social Directive');
   }]);
 });
