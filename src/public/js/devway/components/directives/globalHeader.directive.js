@@ -1,97 +1,102 @@
-'use strict';
+(function() {
+  'use strict';
 
-define(['jquery'], function($) {
-  var devwayApp = angular.module('devwayApp');
+  define(function(require) {
+    var angular = require('angular');
+    var $ = require('jquery');
 
-  devwayApp
-    .directive('globalHeader', GlobalHeader);
+    var devwayApp = angular.module('devwayApp');
 
-  GlobalHeader.$inject = [
-    'CONFIG'
-  ];
+    devwayApp
+      .directive('globalHeader', GlobalHeader);
 
-  function GlobalHeader(CONFIG) {
-    var template = CONFIG.baseApp + '/directives/templates/globalHeader.template.html';
+    GlobalHeader.$inject = [
+      'CONFIG'
+    ];
 
-    return {
-      restrict: 'E',
-      controller: 'GlobalHeaderController',
-      bindToController: true,
-      templateUrl: template,
-      controllerAs: 'globalHeaderVm',
-      scope: {
-        i18n: '='
-      }
-    };
-  }
+    function GlobalHeader(CONFIG) {
+      var template = CONFIG.baseApp + '/directives/templates/globalHeader.template.html';
 
-  devwayApp
-    .controller('GlobalHeaderController', GlobalHeaderController);
-
-  GlobalHeaderController.$inject = [
-    'CONFIG',
-    'devwayUsersService'
-  ];
-
-  function GlobalHeaderController(CONFIG, codejobsUsersService) {
-    var globalHeaderVm = this;
-
-    // Properties
-    globalHeaderVm.basePath = CONFIG.basePath;
-
-    // Methods
-    globalHeaderVm.isConnected = isConnected;
-    globalHeaderVm.modal = modal;
-
-    // Invoking functions
-    globalHeaderVm.isConnected();
-
-    // Functions
-    function isConnected() {
-      globalHeaderVm.isConnected = false;
-
-      codejobsUsersService
-        .isConnected()
-        .then(function(response) {
-          globalHeaderVm.isConnected = response.isConnected;
-
-          if (response.isConnected) {
-            globalHeaderVm.networkId = response.user.networkId;
-            globalHeaderVm.username  = response.user.username;
-            globalHeaderVm.avatar    = response.user.avatar;
-          }
-        });
+      return {
+        restrict: 'E',
+        controller: 'GlobalHeaderController',
+        bindToController: true,
+        templateUrl: template,
+        controllerAs: 'globalHeaderVm',
+        scope: {
+          i18n: '='
+        }
+      };
     }
 
-    function modal(modal) {
-      $('.modal').show();
+    devwayApp
+      .controller('GlobalHeaderController', GlobalHeaderController);
 
-      if (modal.type === 'login') {
-        $('.register-modal').removeClass('slidedown').addClass('slideup');
+    GlobalHeaderController.$inject = [
+      'CONFIG',
+      'devwayUsersService'
+    ];
 
-        if ($('.login-modal').hasClass('slideup')) {
-          $('.login-modal').removeClass('slideup').addClass('slidedown');
+    function GlobalHeaderController(CONFIG, codejobsUsersService) {
+      var globalHeaderVm = this;
+
+      // Properties
+      globalHeaderVm.basePath = CONFIG.basePath;
+
+      // Methods
+      globalHeaderVm.isConnected = isConnected;
+      globalHeaderVm.modal = modal;
+
+      // Invoking functions
+      globalHeaderVm.isConnected();
+
+      // Functions
+      function isConnected() {
+        globalHeaderVm.isConnected = false;
+
+        codejobsUsersService
+          .isConnected()
+          .then(function(response) {
+            globalHeaderVm.isConnected = response.isConnected;
+
+            if (response.isConnected) {
+              globalHeaderVm.networkId = response.user.networkId;
+              globalHeaderVm.username  = response.user.username;
+              globalHeaderVm.avatar    = response.user.avatar;
+            }
+          });
+      }
+
+      function modal(modal) {
+        $('.modal').show();
+
+        if (modal.type === 'login') {
+          $('.register-modal').removeClass('slidedown').addClass('slideup');
+
+          if ($('.login-modal').hasClass('slideup')) {
+            $('.login-modal').removeClass('slideup').addClass('slidedown');
+          } else {
+            $('.login-modal').removeClass('slidedown').addClass('slideup');
+          }
         } else {
           $('.login-modal').removeClass('slidedown').addClass('slideup');
-        }
-      } else {
-        $('.login-modal').removeClass('slidedown').addClass('slideup');
 
-        if ($('.register-modal').hasClass('slideup')) {
-          $('.register-modal').removeClass('slideup').addClass('slidedown');
-        } else {
+          if ($('.register-modal').hasClass('slideup')) {
+            $('.register-modal').removeClass('slideup').addClass('slidedown');
+          } else {
+            $('.register-modal').removeClass('slidedown').addClass('slideup');
+          }
+        }
+
+        $('.close').on('click', function() {
           $('.register-modal').removeClass('slidedown').addClass('slideup');
-        }
+          $('.login-modal').removeClass('slidedown').addClass('slideup');
+        });
       }
-
-      $('.close').on('click', function() {
-        $('.register-modal').removeClass('slidedown').addClass('slideup');
-        $('.login-modal').removeClass('slidedown').addClass('slideup');
-      });
     }
-  }
 
-  devwayApp.run(['$log', function($log) {
-    $log.info('Inside GlobalHeader Directive');
-  }]);
-});
+    devwayApp.run(['$log', function($log) {
+      $log.info('Inside GlobalHeader Directive');
+    }]);
+  });
+})();

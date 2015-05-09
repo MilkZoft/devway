@@ -1,22 +1,26 @@
-'use strict';
+(function() {
+  'use strict';
 
-define(function() {
-  var devwayApp = angular.module('devwayApp');
+  define(function(require) {
+    var angular = require('angular');
 
-  devwayApp.controller('DevwayAppController', DevwayAppController);
+    var devwayApp = angular.module('devwayApp');
 
-  DevwayAppController.$inject = [
-    '$scope',
-    '__'
-  ];
+    devwayApp.controller('DevwayAppController', DevwayAppController);
 
-  function DevwayAppController($scope, __) {
-    var vm = this;
+    DevwayAppController.$inject = [
+      '$scope',
+      '__'
+    ];
 
-    vm.__ = __;
-  }
+    function DevwayAppController($scope, __) {
+      var vm = this;
 
-  devwayApp.run(['$log', function($log) {
-    $log.info('Inside DevwayAppController');
-  }]);
-});
+      vm.__ = __;
+    }
+
+    devwayApp.run(['$log', function($log) {
+      $log.info('Inside DevwayAppController');
+    }]);
+  });
+})();

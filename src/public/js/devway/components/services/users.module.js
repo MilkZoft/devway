@@ -1,26 +1,30 @@
-'use strict';
+(function() {
+  'use strict';
 
-define(function() {
-  var devwayUsersService = angular.module('devway.usersService', [
-    'restangular'
-  ]);
+  define(function(require) {
+    var angular = require('angular');
 
-  devwayUsersService
-    .factory('devwayUsersService', DevwayUsersService);
+    var devwayUsersService = angular.module('devway.usersService', [
+      'restangular'
+    ]);
 
-  DevwayUsersService.$inject = [
-    'Restangular'
-  ];
+    devwayUsersService
+      .factory('devwayUsersService', DevwayUsersService);
 
-  function DevwayUsersService(Restangular) {
-    return {
-      isConnected: function() {
-        return Restangular.one('users/is-connected').get();
-      }
-    };
-  }
+    DevwayUsersService.$inject = [
+      'Restangular'
+    ];
 
-  devwayUsersService.run(['$log', function($log) {
-    $log.info('Inside Users Service');
-  }]);
-});
+    function DevwayUsersService(Restangular) {
+      return {
+        isConnected: function() {
+          return Restangular.one('users/is-connected').get();
+        }
+      };
+    }
+
+    devwayUsersService.run(['$log', function($log) {
+      $log.info('Inside Users Service');
+    }]);
+  });
+})();
