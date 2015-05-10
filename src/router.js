@@ -27,6 +27,7 @@ module.exports = function(app) {
     res.locals.currentLanguage = i18n.getCurrentLanguage(req.url);
     res.locals.__ = i18n.load(i18n.getCurrentLanguage(req.url));
     res.locals.basePath = res.locals.config.basePath;
+    res.locals.securityToken = req.session.securityToken;
     next();
   });
 

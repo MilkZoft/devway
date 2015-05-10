@@ -10,6 +10,9 @@ var app = express();
 // config
 var config = require('./lib/config');
 
+// security
+var security = require('./lib/helpers/security');
+
 // logging
 var logger = require('morgan');
 app.use(logger('dev'));
@@ -32,6 +35,15 @@ app.use(session({
     db : config().database.mongodb.sessionDatabase
   })
 }));
+
+// security token
+app.use(function(req, res, next) {
+  if (!req.session.securityToken) {
+    req.session.securityToken = security.sha1(new Date());
+  }
+
+  next();
+});
 
 // layout
 var exphbs = require('express-handlebars');
