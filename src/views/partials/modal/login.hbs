@@ -1,0 +1,41 @@
+<div class="login">
+    <h2>{{{ icon "fa-user-secret" }}}</h2>
+
+    <div class="form-group">
+        <p>
+            {{{ input name = "username" placeholder = __.menu.login.username }}}
+        </p>
+
+        <p>
+            {{{ input type = "password" name = "password" placeholder = __.menu.login.password }}}
+        </p>
+
+        <p>
+            {{{ input id = "remember" name = "remember" type = "checkbox" checked = "true" }}}
+
+            <label for="remember">
+                {{ __.menu.login.remember }}
+            </label>
+        </p>
+
+        <p>
+            {{{ input
+                class = "btn btn-danger submit"
+                type  = "submit"
+                name  = "login"
+                value = __.menu.login.text
+            }}}
+        </p>
+
+        {{{ input type = "hidden" name = "securityToken" value = securityToken }}}
+    </div>
+
+    {{{ socialButtons
+        facebook     = true
+        facebookText = __.social.facebook.signIn
+        facebookLink = "auth/facebook"
+        twitter      = true
+        twitterText  = __.social.twitter.signIn
+        twitterLink  = "auth/twitter"
+    }}}
+</div>

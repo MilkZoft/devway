@@ -2,6 +2,8 @@
 
 var config = require('../config');
 var minify = require('html-minifier').minify;
+var form   = require('./form');
+var social = require('./social');
 
 module.exports = {
   debug: function(variable) {
@@ -24,5 +26,44 @@ module.exports = {
       collapseWhitespace: true,
       minifyJS: true
     });
+  },
+
+  input: function(options) {
+    if (typeof options.hash !== 'undefined') {
+      return form.createInput(options.hash);
+    }
+  },
+
+  icon: function(icon) {
+    return '<i class="fa ' + icon + '"></i>';
+  },
+
+  socialButtons: function(options) {
+    var networks = [];
+    var network = {};
+
+    if (typeof options.hash !== 'undefined') {
+      if (options.hash.facebook) {
+        network = {
+          name: 'facebook',
+          text: options.hash.facebookText,
+          link: options.hash.facebookLink
+        };
+
+        networks.push(network);
+      }
+
+      if (options.hash.twitter) {
+        network = {
+          name: 'twitter',
+          text: options.hash.twitterText,
+          link: options.hash.twitterLink
+        };
+
+        networks.push(network);
+      }
+    }
+
+    return social.createButtons(networks);
   }
 };

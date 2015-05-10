@@ -1,46 +1,48 @@
-'use strict';
+(function() {
+  'use strict';
 
-require.config({
-  paths: {
-    // General dependencies
-    'angular': '/bower_components/angular/angular.min',
-    'jquery':  '/bower_components/jquery/dist/jquery.min',
-    'lodash': '/bower_components/lodash/dist/lodash.min',
-    'restangular': '/bower_components/restangular/dist/restangular.min',
+  require.config({
+    paths: {
+      // General dependencies
+      'angular': '/bower_components/angular/angular.min',
+      'jquery':  '/bower_components/jquery/dist/jquery.min',
+      'lodash': '/bower_components/lodash/dist/lodash.min',
+      'restangular': '/bower_components/restangular/dist/restangular.min',
 
-    // Local dependencies
-    'device': '/js/device',
+      // Local dependencies
+      'device': '/js/device',
 
-    'devwayApp': 'devway/devway.module'
-  },
-
-  priority: ['angular'],
-
-  shim: {
-    'angular': {
-      deps: ['jquery'],
-      exports: 'angular'
+      'devwayApp': 'devway/devway.module'
     },
 
-    'jquery': {
-      exports: '$'
-    },
+    priority: ['angular'],
 
-    'lodash': {
-      exports: '_'
-    },
+    shim: {
+      'angular': {
+        deps: ['jquery'],
+        exports: 'angular'
+      },
 
-    'restangular': {
-      deps: ['angular', 'lodash'],
-    },
+      'jquery': {
+        exports: '$'
+      },
 
-    'devwayApp': {
-      deps: ['angular']
+      'lodash': {
+        exports: '_'
+      },
+
+      'restangular': {
+        deps: ['angular', 'lodash'],
+      },
+
+      'devwayApp': {
+        deps: ['angular']
+      }
     }
-  }
-});
+  });
 
-require([
-  'device',
-  'devwayApp'
-]);
+  require([
+    'device',
+    'devwayApp'
+  ]);
+})();

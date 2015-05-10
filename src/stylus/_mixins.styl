@@ -7,51 +7,84 @@ $clearfix()
         clear both
         height 0
 
+$centerWithMargin($width = 100%)
+    display block
+    margin 0 auto
+    width $width
+
 $hide()
     display none
 
+$noContent()
+    content ''
+    background transparent
+
 $noSelect()
+    outline none
     touch-callout none
     user-select none
 
 $pointer()
     cursor pointer
 
+/* Font Awesome */
+$fa($code, $size = 1em, $color = $blueDevWay, $bgColor = transparent)
+    background-color $bgColor
+    color $color
+    content $code
+    font-family FontAwesome
+    font-size $size
+
 /* Logo */
 $displayLogo()
-    $noSelect()
     font-size 26px
     margin 0 auto
     text-transform uppercase
     width 202px
 
-    .code
+    a
+        $noSelect()
+
+    .developer
         color $darkGray
 
-    .jobs
-        color $blueCodejobs
+    .way
+        color $blueDevWay
         font-weight $fontWeightBold
 
     &:hover
-        .code
-            color $blueCodejobs
+        .developer
+            color $blueDevWay
 
-        .jobs
+        .way
             color $darkGray
 
 /* Borders */
 $border($color = red)
     border 1px solid $color
 
-$borderRadius($topRight = 0px, $bottomRight = 0px, $bottomLeft = 0px, $topLeft = 0px)
-    border-top-right-radius $topRight
-    border-bottom-right-radius $bottomRight
-    border-bottom-left-radius $bottomLeft
-    border-top-left-radius $topLeft
+$borderRadius($radius = 5px, $args...)
+    if length($args) == 3
+        border-top-right-radius $radius
+        border-bottom-right-radius $args[0]
+        border-bottom-left-radius $args[1]
+        border-top-left-radius $args[2]
+    else if length($args) == 2
+        border-top-right-radius $radius
+        border-bottom-right-radius $args[0]
+        border-bottom-left-radius $args[1]
+    else if length($args) == 1
+        border-top-right-radius $radius
+        border-bottom-right-radius $args[0]
+    else
+        border-radius $radius
 
 /* BoxShadow */
-$boxShadow($h = 2px, $v = 2px, $blur = 2px, $color = rgba(0, 0, 0, 0.3))
-    box-shadow $h $v $blur $color
+$boxShadow($h = 2px, $v = 2px, $blur = 2px, $inset = false, $opacity = 0.3)
+    if (!$inset)
+        box-shadow $h $v $blur rgba(0, 0, 0, $opacity)
+    else
+        box-shadow inset $h $v $blur rgba(0, 0, 0, $opacity)
 
 /* Lists */
 $resetUl()
