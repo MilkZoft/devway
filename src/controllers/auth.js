@@ -5,7 +5,7 @@ var router  = express.Router();
 var config  = require('../lib/config');
 var twitter = require('../lib/helpers/twitter');
 
-router.get('/', function(req, res) {
+router.get('/twitter', function(req, res) {
   twitter.getOAuthRequestToken(function(tokens) {
     req.session.oauth = {
       'token': tokens[0],
@@ -16,7 +16,7 @@ router.get('/', function(req, res) {
   });
 });
 
-router.get('/callback', function(req, res) {
+router.get('/twitter/callback', function(req, res) {
   var oauthData = req.session.oauth;
 
   if (oauthData) {

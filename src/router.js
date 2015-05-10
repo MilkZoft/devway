@@ -5,15 +5,15 @@ var availableLanguages = config().languages.list.join('|');
 var defaultController;
 var apiController;
 var homeController;
-var twitterController;
+var authController;
 var usersController;
 
 module.exports = function(app) {
   defaultController = require('./controllers/' + config().controllers.default);
   apiController     = require('./controllers/api');
   homeController    = require('./controllers/home');
-  twitterController = require('./controllers/twitter');
-  usersController = require('./controllers/users');
+  authController    = require('./controllers/auth');
+  usersController   = require('./controllers/users');
 
   // Load necessary helpers
   var i18n = require('./lib/helpers/i18n');
@@ -44,9 +44,8 @@ module.exports = function(app) {
 
   // Controllers dispatch
   app.use('/', defaultController);
-  app.use('/:language(' + availableLanguages + ')', defaultController);
   app.use('/api', apiController);
-  app.use('/twitter', twitterController);
+  app.use('/auth', authController);
   app.use('/home', homeController);
   app.use('/users', usersController);
 

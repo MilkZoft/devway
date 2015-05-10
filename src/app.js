@@ -19,7 +19,7 @@ app.use(logger('dev'));
 
 // cookies/session
 var session = require('express-session');
-var MongoStore = require('connect-mongo')(session);
+var RedisStore = require('connect-redis')(session);
 var cookieParser = require('cookie-parser');
 
 app.use(cookieParser());
@@ -31,9 +31,7 @@ app.use(session({
   cookie: {
     maxAge: 180 * 60 * 1000 // 3 hours
   },
-  store: new MongoStore({
-    db : config().database.mongodb.sessionDatabase
-  })
+  store: new RedisStore(),
 }));
 
 // security token
