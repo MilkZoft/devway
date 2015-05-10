@@ -1,22 +1,22 @@
 'use strict';
 
 module.exports = function(grunt) {
-  grunt.registerTask('status', 'Shows status of node processes', ['shell:pm2Status']);
-  grunt.registerTask('stop', 'Stop node processes', ['shell:pm2Stop']);
-  grunt.registerTask('start', 'Start node processes', ['shell:pm2Start']);
-  grunt.registerTask('restart', 'Restart node processes', ['stop', 'start']);
-  grunt.registerTask('logs', 'Tail logs for all pm2 processes', ['shell:pm2Logs']);
+  grunt.registerTask('status', 'Shows status of node processes on Vagrant VM', ['shell:vagrantStatus']);
+  grunt.registerTask('stop', 'Stop node processes on Vagrant VM', ['shell:vagrantStop']);
+  grunt.registerTask('start', 'Start node processes on Vagrant VM', ['shell:vagrantStart']);
+  grunt.registerTask('restart', 'Restart node processes on Vagrant VM', ['stop', 'start']);
+  grunt.registerTask('logs', 'Tail logs for all pm2 processes', ['shell:vagrantLogs']);
 
   grunt.registerTask('build-start-dist', 'Build to dist directory and start', [
     'stop',
     'deploy',
-    'shell:setDistPermissions',
+    'shell:vagrantSetDistPermissions',
     'shell:buildDistNpmModules',
-    'shell:startDist'
+    'shell:vagrantStartDist'
   ]);
 
   grunt.registerTask('restart-dist', 'Restart dist servers', [
     'stop',
-    'shell:startDist'
+    'shell:vagrantStartDist'
   ]);
 };
