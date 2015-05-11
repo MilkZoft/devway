@@ -102,3 +102,47 @@ $retina($image, $extension = 'png')
            (min-resolution: 2dppx)
         background-image url($image'_2x.'$extension)
         background-size cover
+
+/* Modal */
+$modal($name)
+    .{$name}
+        margin 0 auto
+        margin-top 20px
+        height 400px
+        width 440px
+        position relative
+
+        h2
+            if $name == 'login'
+                color $gray
+            else if $name == 'register'
+                color $white
+            font-size 30px
+            text-align center
+            margin-bottom 0
+
+        .form-group
+            padding-bottom 20px
+
+            .submit
+                $centerWithMargin(30%)
+
+            .checkbox
+                input
+                    position absolute
+                    width 40px
+
+    .btn-social
+        bottom 0
+        position absolute
+        width 200px
+
+    .btn-twitter
+        left 0
+
+    .btn-facebook
+        right 0
+
+    &.closed
+        display none
+        max-height 0

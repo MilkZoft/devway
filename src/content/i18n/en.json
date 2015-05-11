@@ -24,6 +24,7 @@
     "login": {
       "username": "Username",
       "password": "Password",
+      "email": "Email",
       "text": "Login",
       "title": "Connect to your account",
       "remember": "Remember me"
