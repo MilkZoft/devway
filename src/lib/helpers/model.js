@@ -4,6 +4,12 @@ var db = require('../db/mysql');
 
 module.exports = function(schema) {
   return {
+    executeQuery: function(model, sql, callback, fn) {
+      model.query(sql, function(error, result) {
+        console.log(result);
+        fn(result, callback);
+      });
+    },
     get: function(q, callback) {
       if (q === 'all') {
         schema.fields = schema.fields;
