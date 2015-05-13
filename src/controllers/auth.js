@@ -30,7 +30,7 @@ router.get('/twitter/callback', function(req, res) {
         req.session.oauth = sessions[0];
         req.session.user  = sessions[1];
 
-        res.redirect(res.locals.basePath);
+        res.redirect(res.locals.basePath + '/users/validation');
       }
     );
   }
