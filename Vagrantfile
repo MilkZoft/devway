@@ -10,7 +10,8 @@ Vagrant.configure(2) do |config|
 
   # Proxy network, Node: 3000 & Apache: 1111
   config.vm.network :forwarded_port, guest: 3000, host: 2727, auto_correct: true
-  config.vm.network :forwarded_port, guest: 27017, host: 27017, auto_correct: true
+  config.vm.network :forwarded_port, guest: 22, host: 2200, id: "ssh", disabled: "true"
+  config.vm.network :forwarded_port, guest: 22, host: 2201
 
   # Virtualbox setup
   config.vm.define VM
