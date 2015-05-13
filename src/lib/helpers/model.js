@@ -4,12 +4,12 @@ var db = require('../db/mysql');
 
 module.exports = function(schema) {
   return {
-    executeQuery: function(model, sql, callback, fn) {
-      model.query(sql, function(error, result) {
-        console.log(result);
+    query: function(sql, callback, fn) {
+      this.executeQuery(sql, function(error, result) {
         fn(result, callback);
       });
     },
+
     get: function(q, callback) {
       if (q === 'all') {
         schema.fields = schema.fields;
@@ -72,7 +72,7 @@ module.exports = function(schema) {
       return false;
     },
 
-    query: function(sql, callback) {
+    executeQuery: function(sql, callback) {
       db.query(sql, callback);
     }
   };

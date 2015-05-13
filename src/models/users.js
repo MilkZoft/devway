@@ -1,20 +1,22 @@
+'use strict';
+
 var Model = require('../lib/helpers/model');
 var Users = new Model();
 var fields = '';
 
 module.exports = {
-  getAll: function(params, callback) {
-    var sql = '';
-    var language = global.lang.current;
-    var page = (typeof(params.page) !== 'undefined') ? params.page : 0;
+  getUser: function(user, callback) {
+    var params  = '\'' + user.network   + '\', ';
+        params += '\'' + user.networkId + '\', ';
+        params += '\'' + user.username  + '\', ';
+        params += '\'' + user.password  + '\'';
 
-    sql = 'CALL getPosts(\'' + language + '\', \'' + page + '\', \'' + 10 + '\');';
+    var sql = 'CALL getUser(' + params + ');';
 
-    Model.executeQuery(Users, sql, callback, function(result, callback) {
-      var total = (typeof(result) !== 'undefined') ? result[0][0].total : 0;
-      var posts = (typeof(result) !== 'undefined') ? result[1] : [];
+    Users.query(sql, callback, function(result, callback) {
+      var data = (result[0].length > 0) ? result[0] : false;
 
-      callback(total, posts);
+      callback(data);
     });
   }
 };
