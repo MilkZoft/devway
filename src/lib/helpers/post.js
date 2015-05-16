@@ -11,8 +11,10 @@ module.exports = function(req, res, next) {
 
   next();
 
-  function resetSecurityToken() {
-    res.clearSession('securityToken');
+  function refreshSecurityToken() {
+    if (config().refreshSecurityToken) {
+      res.clearSession('securityToken');
+    }
   }
 
   function validateSecurityToken() {
@@ -46,8 +48,8 @@ module.exports = function(req, res, next) {
         value = utils.escape(utils.removeHTML(value));
       }
 
-      // Resetting securityToken for next request
-      resetSecurityToken();
+      // Refreshing securityToken for next request
+      refreshSecurityToken();
 
       return value;
     } else {
