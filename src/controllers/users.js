@@ -3,10 +3,14 @@
 var express = require('express');
 var router = express.Router();
 var usersModel = require('../models/users');
+var security = require('../lib/helpers/security');
+var utils = require('../lib/helpers/utils');
 
+/* GET actions */
 router.get('/validation', function(req, res, next) {
-  if (typeof req.session.user !== 'undefined' && typeof req.session.oauth !== 'undefined') {
-    var connectedUser = req.session.user;
+  if (!utils.isUndefined(res.session('user')) && !utils.isUndefined(res.session('oauth'))) {
+    var connectedUser = res.session('user');
+
     var user = usersModel.getUser({
       network: connectedUser.network,
       networkId: connectedUser.networkId,
@@ -14,9 +18,9 @@ router.get('/validation', function(req, res, next) {
       password: false
     }, function(userInfo) {
       if (userInfo) {
-        res.end('Logged in');
+        res.redirect('/');
       } else {
-        res.end('Registration');
+        res.redirect('/users/register');
       }
     });
   } else {
@@ -25,7 +29,7 @@ router.get('/validation', function(req, res, next) {
 });
 
 router.get('/logout', function(req, res, next) {
-  req.session.destroy();
+  res.destroySessions();
 
   res.redirect('/');
 });
@@ -35,7 +39,24 @@ router.get('/login', function(req, res, next) {
 });
 
 router.get('/register', function(req, res, next) {
-  res.render('users/register');
+  if (!utils.isUndefined(res.session('user')) && !utils.isUndefined(res.session('oauth'))) {
+    var connectedUser = res.session('user');
+
+    res.destroySessions();
+
+    res.render('users/register', {
+      user: connectedUser
+    });
+  } else {
+    res.render('users/register', {
+      user: false
+    });
+  }
+});
+
+/* POST actions */
+router.post('/registration', function(req, res, next) {
+
 });
 
 module.exports = router;

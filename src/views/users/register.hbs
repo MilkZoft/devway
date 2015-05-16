@@ -1,0 +1,53 @@
+<div class="registration">
+    <form action="/users/registration" method="post">
+        {{#if user}}
+            <h2>{{ __.users.completeRegister }}</h2>
+
+            {{{ label for = "user" text = __.users.username }}}
+
+            <p>
+                {{{ input
+                    id = "user"
+                    name = "username"
+                    value = user.username
+                    required = true
+                }}}
+            </p>
+
+            {{{ label for = "email" text = __.users.email }}}
+
+            <p>
+                {{{ input
+                    id = "email"
+                    name = "email"
+                    placeholder = __.users.email
+                    required = true
+                }}}
+            </p>
+
+            <p>
+                {{{ checkbox id = "suscribe" name = "suscribe" checked = "true" }}}
+
+                {{{ label
+                    for = "suscribe"
+                    class = "checkboxLabel"
+                    text = __.users.subscribe
+                }}}
+            </p>
+
+            <p>
+                {{{ input
+                    class = "btn btn-danger submit"
+                    type  = "submit"
+                    name  = "register"
+                    value = __.menu.register.text
+                }}}
+            </p>
+        {{else}}
+            <h2>{{ __.users.newUser }}</h2>
+            <p>Nuevo usuario</p>
+        {{/if}}
+
+        {{{ input type = "hidden" name = "securityToken" value = securityToken }}}
+    </form>
+</div>

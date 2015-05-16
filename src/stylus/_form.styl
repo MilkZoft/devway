@@ -16,12 +16,14 @@ button
     padding-left 10px
     width 100%
 
-label
+.checkboxLabel
     font-size 14px
     color $gray
+
     &:before
         $noContent()
         $border($blueDevWay)
+        background-color $white
         border-radius 50%
         display inline-block
         height 25px
@@ -32,11 +34,11 @@ label
 
 input[type=checkbox]
     display none
-    & + label
-        cursor pointer
+    & + .checkboxLabel
+        $pointer()
 
 input[type=checkbox]:checked
-    & + label
+    & + .checkboxLabel
         &:before
             $fa("\f00c", 24px, $white, $blueDevWay)
 

@@ -34,6 +34,21 @@ module.exports = {
     }
   },
 
+  checkbox: function(options) {
+    options.hash.type = 'checkbox';
+
+    if (typeof options.hash !== 'undefined') {
+      return form.createInput(options.hash);
+    }
+  },
+
+  label: function(options) {
+    if (typeof options.hash !== 'undefined') {
+      var labelText = (options.hash.text) ? options.hash.text : '';
+      return form.createLabel(options.hash, labelText);
+    }
+  },
+
   icon: function(icon) {
     return '<i class="fa ' + icon + '"></i>';
   },

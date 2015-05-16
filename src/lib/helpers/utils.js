@@ -1,6 +1,10 @@
 'use strict';
 
 module.exports = {
+  isUndefined: function(variable) {
+    return (typeof variable === 'undefined') ? true : false;
+  },
+
   isYear: function(year) {
     return (typeof(year) !== 'undefined' && year.length === 4 && !isNaN(year));
   },
@@ -55,11 +59,11 @@ module.exports = {
     return str.replace(/(<([^>]+)>)/ig, '');
   },
 
-  escape: function(html) {
-    return String(html)
+  escape: function(str) {
+    return str
+      .replace(/'/g, '\'')
+      .replace(/"/g, '\\"')
       .replace(/&/g, '&amp;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;');
   },

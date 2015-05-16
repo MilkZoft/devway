@@ -7,6 +7,10 @@ var path = require('path');
 // Initializing express application
 var app = express();
 
+// Body Parser
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: false}));
+
 // config
 var config = require('./lib/config');
 
@@ -17,27 +21,21 @@ var security = require('./lib/helpers/security');
 var logger = require('morgan');
 app.use(logger('dev'));
 
+// input
+var input = require('./lib/helpers/input');
+app.use(input);
+
 // cookies/session
-var session = require('express-session');
-var RedisStore = require('connect-redis')(session);
 var cookieParser = require('cookie-parser');
+var session = require('./lib/helpers/session');
 
 app.use(cookieParser());
-
-app.use(session({
-  secret: config().security.secret,
-  saveUninitialized: true,
-  resave: true,
-  cookie: {
-    maxAge: 180 * 60 * 1000 // 3 hours
-  },
-  store: new RedisStore(),
-}));
+app.use(session);
 
 // security token
 app.use(function(req, res, next) {
-  if (!req.session.securityToken) {
-    req.session.securityToken = security.sha1(new Date());
+  if (!res.session('securityToken')) {
+    res.session('securityToken', security.sha1(new Date()));
   }
 
   next();

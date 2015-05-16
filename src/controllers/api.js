@@ -2,6 +2,7 @@
 
 var express = require('express');
 var router = express.Router();
+var utils = require('../lib/helpers/utils');
 
 router.get('/', function(req, res, next) {
   res.json({
@@ -10,13 +11,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/users/is-connected', function(req, res, next) {
-  if (typeof req.session.user !== 'undefined') {
+  if (!utils.isUndefined(res.session('user'))) {
     res.json({
       'isConnected': true,
       'user': {
-        'networkId': req.session.user.networkId,
-        'username': req.session.user.username,
-        'avatar': req.session.user.avatar
+        'networkId': res.session('user').networkId,
+        'username': res.session('user').username,
+        'avatar': res.session('user').avatar
       }
     });
   } else {

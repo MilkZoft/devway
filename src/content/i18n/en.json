@@ -22,9 +22,6 @@
       "title": "Learn & share your knowledge with the community"
     },
     "login": {
-      "username": "Username",
-      "password": "Password",
-      "email": "Email",
       "text": "Login",
       "title": "Connect to your account",
       "remember": "Remember me"
@@ -67,5 +64,13 @@
     "youtube": {
       "subscribers": "subscribers"
     }
+  },
+  "users": {
+    "completeRegister": "Complete Registration",
+    "newUser": "New User",
+    "username": "Username",
+    "password": "Password",
+    "email": "Email",
+    "subscribe": "Subscribe to our newsletter"
   }
 }
