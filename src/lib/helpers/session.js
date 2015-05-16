@@ -73,18 +73,21 @@ module.exports = function(req, res, next) {
     res.cookie(cookieKey, cookieValue, options);
   }
 
-  function clearSession(key) {
+  function clearSession(keys) {
     var cookieKey;
+    var key = keys;
 
-    if (!key) {
-      return;
+    if (keys instanceof Array) {
+      _.forEach(keys, function(key) {
+        delete sessionData[key];
+        cookieKey = cookiePrefix + key;
+        res.clearCookie(cookieKey, deleteOptions);
+      });
+    } else {
+      delete sessionData[key];
+      cookieKey = cookiePrefix + key;
+      res.clearCookie(cookieKey, deleteOptions);
     }
-
-    // clear value
-    delete sessionData[key];
-
-    cookieKey = cookiePrefix + key;
-    res.clearCookie(cookieKey, deleteOptions);
   }
 
   function destroySessions() {

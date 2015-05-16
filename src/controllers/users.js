@@ -42,7 +42,7 @@ router.get('/register', function(req, res, next) {
   if (!utils.isUndefined(res.session('user')) && !utils.isUndefined(res.session('oauth'))) {
     var connectedUser = res.session('user');
 
-    res.destroySessions();
+    res.clearSession(['user', 'oauth']);
 
     res.render('users/register', {
       user: connectedUser
@@ -56,7 +56,7 @@ router.get('/register', function(req, res, next) {
 
 /* POST actions */
 router.post('/registration', function(req, res, next) {
-
+  res.send(res.getPost('username'));
 });
 
 module.exports = router;

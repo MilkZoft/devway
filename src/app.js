@@ -21,9 +21,9 @@ var security = require('./lib/helpers/security');
 var logger = require('morgan');
 app.use(logger('dev'));
 
-// input
-var input = require('./lib/helpers/input');
-app.use(input);
+// post
+var post = require('./lib/helpers/post');
+app.use(post);
 
 // cookies/session
 var cookieParser = require('cookie-parser');

@@ -7,11 +7,25 @@ var utils = require('./utils');
 var post = {};
 
 module.exports = function(req, res, next) {
-  res.getInput = getInput;
+  res.getPost = getPost;
 
   next();
 
-  function getInput(options) {
+  function resetSecurityToken() {
+    res.clearSession('securityToken');
+  }
+
+  function validateSecurityToken() {
+    if (res.session('securityToken') === req.body[security.md5('securityToken')]) {
+      post = req.body;
+    } else {
+      post = false;
+    }
+  }
+
+  function getPost(options) {
+    validateSecurityToken();
+
     var input = options;
     var filter = 'strong';
     var value;
@@ -31,6 +45,9 @@ module.exports = function(req, res, next) {
       } else if (filter === 'strong') {
         value = utils.escape(utils.removeHTML(value));
       }
+
+      // Resetting securityToken for next request
+      resetSecurityToken();
 
       return value;
     } else {
