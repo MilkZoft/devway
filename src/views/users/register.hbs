@@ -18,6 +18,7 @@
                 {{{ input
                     id = "user"
                     name = "username"
+                    maxlength = "20"
                     value = user.username
                     required = true
                 }}}
@@ -28,8 +29,11 @@
             <p>
                 {{{ input
                     id = "email"
+                    type = "email"
                     name = "email"
-                    placeholder = __.users.email
+                    maxlength = "80"
+                    placeholder = __.users.example.email
+                    pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
                     required = true
                 }}}
             </p>

@@ -90,6 +90,9 @@
     "password": "Password",
     "email": "Email",
     "subscribe": "Subscribe to our newsletter",
-    "hello": "Hi"
+    "hello": "Hi",
+    "example": {
+      "email": "yourname@example.com"
+    }
   }
 }
