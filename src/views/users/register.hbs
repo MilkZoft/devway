@@ -1,7 +1,17 @@
 <div class="registration">
     <form action="/users/registration" method="post">
         {{#if user}}
-            <h2>{{ __.users.completeRegister }}</h2>
+            <h2>{{{ icon "fa-users" }}} {{ __.users.completeRegister }}</h2>
+
+            <p class="avatar">
+                <img src="{{ user.avatar }}" alt="{{ user.username }}" />
+
+                {{#is user.network "twitter"}}
+                    <span class="welcome">{{ __.users.hello }}, <strong>@{{ user.username }}</strong>!</span>
+                {{else}}
+                    <span class="welcome">{{ __.users.hello }}, <strong>{{ user.username }}</strong>!</span>
+                {{/is}}
+            </p>
 
             {{{ label for = "user" text = __.users.username }}}
 
@@ -26,7 +36,7 @@
             </p>
 
             <p>
-                {{{ checkbox id = "suscribe" name = "suscribe" checked = "true" }}}
+                {{{ checkbox id = "suscribe" name = "subscribed" checked = "true" }}}
 
                 {{{ label
                     for = "suscribe"
@@ -43,11 +53,15 @@
                     value = __.menu.register.text
                 }}}
             </p>
+
+            {{{ hidden name = "avatar"    value = user.avatar    }}}
+            {{{ hidden name = "network"   value = user.network   }}}
+            {{{ hidden name = "networkId" value = user.networkId }}}
         {{else}}
             <h2>{{ __.users.newUser }}</h2>
             <p>Nuevo usuario</p>
         {{/if}}
 
-        {{{ input type = "hidden" name = "securityToken" value = securityToken }}}
+        {{{ token securityToken }}}
     </form>
 </div>

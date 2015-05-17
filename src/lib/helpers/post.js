@@ -20,7 +20,7 @@ module.exports = function(req, res, next) {
     validateSecurityToken();
 
     if (utils.isUndefined(options)) {
-      var options = {
+      options = {
         exclude: []
       };
     }

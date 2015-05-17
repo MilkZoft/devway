@@ -56,7 +56,18 @@ router.get('/register', function(req, res, next) {
 
 /* POST actions */
 router.post('/registration', function(req, res, next) {
-  res.send(res.getPost('username'));
+  usersModel.save(res.getAllPost({
+    exclude: [
+      security.md5('register'),
+      security.md5('securityToken')
+    ]
+  }), function(status) {
+    if (!utils.isUndefined(status[0][0].success)) {
+      res.send(res.__.messages.database.success[status[0][0].success]);
+    } else {
+      res.send(res.__.messages.database.errors[status[0][0].error]);
+    }
+  });
 });
 
 module.exports = router;
