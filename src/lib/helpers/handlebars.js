@@ -3,9 +3,11 @@
 var config = require('../config');
 var minify = require('html-minifier').minify;
 var form   = require('./form');
+var utils  = require('./utils');
 var social = require('./social');
 
 module.exports = {
+  // String helpers
   debug: function(variable) {
     console.log('Debugging Handlebars:');
     console.log('=====================');
@@ -16,6 +18,78 @@ module.exports = {
     console.log(variable);
   },
 
+  lowercase: function(str) {
+    return str.toLowerCase();
+  },
+
+  uppercase: function(str) {
+    return str.toUpperCase();
+  },
+
+  reverse: function(str) {
+    return str.split('').reverse().join('');
+  },
+
+  // Numbers helpers
+  ceil: function(number) {
+    return Math.ceil(parseFloat(number));
+  },
+
+  // Date helpers
+  now: function() {
+    return new Date();
+  },
+
+  // Conditionals helpers
+  is: function(variable, value, options) {
+    if (variable && variable === value) {
+      return options.fn(this);
+    } else {
+      return options.inverse(this);
+    }
+  },
+
+  isNot: function(variable, value, options) {
+    if (!variable || variable !== value) {
+      return options.fn(this);
+    } else {
+      return options.inverse(this);
+    }
+  },
+
+  gt: function(value1, value2, options) {
+    if (value1 > value2) {
+      return options.fn(this);
+    } else {
+      return options.inverse(this);
+    }
+  },
+
+  gte: function(value1, value2, options) {
+    if (value1 >= value2) {
+      return options.fn(this);
+    } else {
+      return options.inverse(this);
+    }
+  },
+
+  lt: function(value1, value2, options) {
+    if (value1 < value2) {
+      return options.fn(this);
+    } else {
+      return options.inverse(this);
+    }
+  },
+
+  lte: function(value1, value2, options) {
+    if (value1 <= value2) {
+      return options.fn(this);
+    } else {
+      return options.inverse(this);
+    }
+  },
+
+  // HTML & Json helpers
   json: function(content) {
     return JSON.stringify(content);
   },
@@ -28,23 +102,53 @@ module.exports = {
     });
   },
 
+  // Forms helpers
   input: function(options) {
-    if (typeof options.hash !== 'undefined') {
+    if (!utils.isUndefined(options.hash)) {
       return form.createInput(options.hash);
     }
   },
 
-  checkbox: function(options) {
-    options.hash.type = 'checkbox';
+  hidden: function(options) {
+    options.hash.type = 'hidden';
 
-    if (typeof options.hash !== 'undefined') {
+    if (!utils.isUndefined(options.hash)) {
+      return form.createInput(options.hash);
+    }
+  },
+
+  token: function(securityToken) {
+    var options = {};
+
+    if (!utils.isUndefined(securityToken)) {
+      options.type  = 'hidden';
+      options.name  = 'securityToken';
+      options.value = securityToken;
+
+      return form.createInput(options);
+    }
+  },
+
+  checkbox: function(options) {
+    if (!utils.isUndefined(options.hash)) {
+      options.hash.type = 'checkbox';
+
+      return form.createInput(options.hash);
+    }
+  },
+
+  radio: function(options) {
+    if (!utils.isUndefined(options.hash)) {
+      options.hash.type = 'radio';
+
       return form.createInput(options.hash);
     }
   },
 
   label: function(options) {
-    if (typeof options.hash !== 'undefined') {
+    if (!utils.isUndefined(options.hash)) {
       var labelText = (options.hash.text) ? options.hash.text : '';
+
       return form.createLabel(options.hash, labelText);
     }
   },
@@ -57,7 +161,7 @@ module.exports = {
     var networks = [];
     var network = {};
 
-    if (typeof options.hash !== 'undefined') {
+    if (!utils.isUndefined(options.hash)) {
       if (options.hash.facebook) {
         network = {
           name: 'facebook',
