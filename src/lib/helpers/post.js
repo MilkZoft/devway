@@ -8,8 +8,37 @@ var post = {};
 
 module.exports = function(req, res, next) {
   res.getPost = getPost;
+  res.validateSecurityToken = validateSecurityToken;
+  res.refreshSecurityToken = refreshSecurityToken;
+  res.getAllPost = getAllPost;
 
   next();
+
+  function getAllPost(options) {
+    var values = {};
+
+    validateSecurityToken();
+
+    if (utils.isUndefined(options)) {
+      var options = {
+        exclude: []
+      };
+    }
+
+    _.forEach(post, function(value, key) {
+      if (options.exclude.length > 0) {
+        if (!_.contains(options.exclude, key)) {
+          values[key] = value;
+        }
+      } else {
+        values[key] = value;
+      }
+    });
+
+    refreshSecurityToken();
+
+    return values;
+  }
 
   function refreshSecurityToken() {
     if (config().refreshSecurityToken) {
@@ -18,16 +47,18 @@ module.exports = function(req, res, next) {
   }
 
   function validateSecurityToken() {
-    if (res.session('securityToken') === req.body[security.md5('securityToken')]) {
-      post = req.body;
+    if (config().validateSecurityToken) {
+      if (res.session('securityToken') === req.body[security.md5('securityToken')]) {
+        post = req.body;
+      } else {
+        post = false;
+      }
     } else {
-      post = false;
+      post = req.body;
     }
   }
 
   function getPost(options) {
-    validateSecurityToken();
-
     var input = options;
     var filter = 'strong';
     var value;
@@ -47,9 +78,6 @@ module.exports = function(req, res, next) {
       } else if (filter === 'strong') {
         value = utils.escape(utils.removeHTML(value));
       }
-
-      // Refreshing securityToken for next request
-      refreshSecurityToken();
 
       return value;
     } else {

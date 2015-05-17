@@ -5,6 +5,7 @@ production: &default
   baseApp: /js/devway/components
   baseApi: /api/
   cookieDomain: .developerway.com
+  validateSecurityToken: true
   refreshSecurityToken: false
   facebook:
     account: deveway
