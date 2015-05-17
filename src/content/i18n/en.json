@@ -21,8 +21,8 @@
         "undefined:username": "Username is undefined"
       },
       "success": {
-        "success:inserted:website:username": "User created successfuly",
-        "success:inserted:social:username": "Social User created successfuly"
+        "inserted:website:username": "User created successfuly",
+        "inserted:social:username": "Social User created successfuly"
       }
     }
   },

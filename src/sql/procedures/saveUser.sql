@@ -47,7 +47,7 @@ BEGIN
                     _suscribed
                   );
 
-                  SET success = 'success:inserted:website:user';
+                  SET success = 'inserted:website:user';
                   SELECT success;
                 END IF;
               END IF;
@@ -102,7 +102,7 @@ BEGIN
                       _suscribed
                     );
 
-                    SET success = 'success:inserted:social:username';
+                    SET success = 'inserted:social:username';
                     SELECT success;
                   END IF;
                 END IF;
