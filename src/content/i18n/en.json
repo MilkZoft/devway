@@ -8,6 +8,24 @@
       "keywords": "HTML5, JavaScript, Node.js"
     }
   },
+  "messages": {
+    "database": {
+      "errors": {
+        "exists:username": "The username already exists",
+        "exists:email": "The email is already registered",
+        "exists:social:networkId": "This social user already exists",
+        "invalid:email": "Invalid Email",
+        "invalid:number:subscribed": "Suscribed should be 1 or 0",
+        "undefined:avatar": "Avatar is undefined",
+        "undefined:networkId": "NetworkId is undefined",
+        "undefined:username": "Username is undefined"
+      },
+      "success": {
+        "success:inserted:website:username": "User created successfuly",
+        "success:inserted:social:username": "Social User created successfuly"
+      }
+    }
+  },
   "menu": {
     "about": {
       "text": "About us",
@@ -71,6 +89,7 @@
     "username": "Username",
     "password": "Password",
     "email": "Email",
-    "subscribe": "Subscribe to our newsletter"
+    "subscribe": "Subscribe to our newsletter",
+    "hello": "Hi"
   }
 }
