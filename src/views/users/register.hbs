@@ -6,11 +6,10 @@
             <p class="avatar">
                 <img src="{{ user.avatar }}" alt="{{ user.username }}" />
 
-                {{#is user.network "twitter"}}
-                    <span class="welcome">{{ __.users.hello }}, <strong>@{{ user.username }}</strong>!</span>
-                {{else}}
-                    <span class="welcome">{{ __.users.hello }}, <strong>{{ user.username }}</strong>!</span>
-                {{/is}}
+                <span class="welcome">
+                    {{ __.users.hello }},
+                    <strong>{{#is user.network "twitter"}}@{{/is}}{{ user.username }}</strong>!
+                </span>
             </p>
 
             {{{ label for = "user" text = __.users.username }}}
