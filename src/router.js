@@ -28,6 +28,7 @@ module.exports = function(app) {
     res.locals.__ = i18n.load(i18n.getCurrentLanguage(req.url));
     res.locals.basePath = res.locals.config.basePath;
     res.locals.securityToken = res.session('securityToken');
+    res.__ = res.locals.__;
     next();
   });
 
