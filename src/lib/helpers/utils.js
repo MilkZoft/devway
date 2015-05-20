@@ -4,11 +4,19 @@ var security = require('./security');
 
 module.exports = {
   md5: function(str) {
-    return security.md5(str);
+    if (this.isDefined(str)) {
+      return security.md5(str);
+    }
+
+    return false;
   },
 
   sha1: function(str) {
-    return security.sha1(str);
+    if (this.isDefined(str)) {
+      return security.sha1(str);
+    }
+
+    return false;
   },
 
   encrypt: function(str) {
@@ -78,20 +86,32 @@ module.exports = {
   },
 
   removeHTML: function(str) {
-    return str.replace(/(<([^>]+)>)/ig, '');
+    if (this.isDefined(str)) {
+      return str.replace(/(<([^>]+)>)/ig, '');
+    }
+
+    return false;
   },
 
   escape: function(str) {
-    return str
-      .replace(/'/g, '\\\'')
-      .replace(/"/g, '\\\\"')
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
+    if (this.isDefined(str)) {
+      return str
+        .replace(/'/g, '\\\'')
+        .replace(/"/g, '\\\\"')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
+    return false;
   },
 
   clean: function(str) {
-    return this.removeHTML(str).replace(/[`ª´·¨Ç~¿!#$%^&*()_|+\-=?;'",<>\{\}\[\]\\]/gi, '');
+    if (this.isDefined(str)) {
+      return this.removeHTML(str).replace(/[`ª´·¨Ç~¿!#$%^&*()_|+\-=?;'",<>\{\}\[\]\\]/gi, '');
+    }
+
+    return false;
   },
 
   convertSecondsToHHMMSS: function(seconds) {

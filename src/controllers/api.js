@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/users/is-connected', function(req, res, next) {
-  if (!utils.isUndefined(res.session('user'))) {
+  if (utils.isDefined(res.session('user'))) {
     res.json({
       'isConnected': true,
       'user': {

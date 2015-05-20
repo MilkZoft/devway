@@ -1,7 +1,6 @@
 'use strict';
 
 var db = require('../db/mysql');
-var security = require('./security');
 var utils = require('./utils');
 var _ = require('lodash');
 
@@ -14,48 +13,41 @@ module.exports = function(schema) {
       var value;
       var keys = _.keys(values);
       var encrypted = false;
+      var method;
+
+      filters = filters || {};
 
       if (utils.isUndefined(filters)) {
         filters = {};
       }
 
-      if (utils.isDefined(keys[0]) && keys[0].length === 32) {
+      if (keys[0].length === 32) {
         encrypted = true;
       }
 
       _.forEach(fields, function(field) {
-        value = values[(encrypted) ? security.md5(field) : field];
-
-        if (utils.isUndefined(value)) {
-          value = '';
-        }
+        value = values[(encrypted) ? utils.md5(field) : field];
 
         if (value === 'on') {
           value = 1;
         }
 
-        if (!utils.isNumber(value)) {
-          if (utils.isDefined(filters[field])) {
-            if (filters[field] === 'escape') {
-              value = '\'' + utils.escape(value) + '\'';
-            } else if (filters[field] === 'removeHTML') {
-              value = '\'' + utils.removeHTML(value) + '\'';
-            } else if (filters[field] === 'encrypt' && value !== '') {
-              value = '\'' + security.encrypt(value) + '\'';
-            } else if (filters[field] === 'md5' && value !== '') {
-              value = '\'' + security.md5(value) + '\'';
-            } else if (filters[field] === 'sha1' && value !== '') {
-              value = '\'' + security.sha1(value) + '\'';
-            } else {
-              value = '\'' + utils.clean(value) + '\'';
-            }
-          } else {
-            value = '\'' + utils.clean(value) + '\'';
-          }
+        if (utils.isUndefined(value)) {
+          value = '';
         }
 
         if (field === 'networkId') {
           value = '\'' + utils.clean(value.toString()) + '\'';
+        }
+
+        if (!utils.isNumber(value)) {
+          method = filters[field];
+
+          if (utils.isDefined(method) && utils.isFunction(utils[method])) {
+            value = '\'' + utils[method](value) + '\'';
+          } else {
+            value = '\'' + utils.clean(value) + '\'';
+          }
         }
 
         if (i === total) {
@@ -67,9 +59,8 @@ module.exports = function(schema) {
       });
 
       procedure = 'CALL ' + procedure + '(' + params + ');';
-      procedure = procedure.replace(new RegExp(', ,', 'g'), ', \'\',');
 
-      return procedure;
+      return procedure.replace(new RegExp(', ,', 'g'), ', \'\',');
     },
 
     query: function(sql, callback, fn) {

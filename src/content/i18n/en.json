@@ -24,6 +24,12 @@
         "inserted:website:username": "User created successfuly",
         "inserted:social:username": "Social User created successfuly"
       }
+    },
+    "users": {
+      "register": {
+        "success": "Your account have been created correctly, enjoy our site!",
+        "fail": "There was a problem trying to create your account, please try again."
+      }
     }
   },
   "menu": {

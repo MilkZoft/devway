@@ -3,12 +3,11 @@
 var express = require('express');
 var router = express.Router();
 var usersModel = require('../models/users');
-var security = require('../lib/helpers/security');
 var utils = require('../lib/helpers/utils');
 
 /* GET actions */
 router.get('/validation', function(req, res, next) {
-  if (!utils.isUndefined(res.session('user')) && !utils.isUndefined(res.session('oauth'))) {
+  if (utils.isDefined(res.session('user')) && utils.isDefined(res.session('oauth'))) {
     var connectedUser = res.session('user');
 
     var user = usersModel.getUser({
@@ -39,7 +38,7 @@ router.get('/login', function(req, res, next) {
 });
 
 router.get('/register', function(req, res, next) {
-  if (!utils.isUndefined(res.session('user')) && !utils.isUndefined(res.session('oauth'))) {
+  if (utils.isDefined(res.session('user')) && utils.isDefined(res.session('oauth'))) {
     var connectedUser = res.session('user');
 
     res.clearSession(['user', 'oauth']);
@@ -56,16 +55,32 @@ router.get('/register', function(req, res, next) {
 
 /* POST actions */
 router.post('/registration', function(req, res, next) {
-  usersModel.save(res.getAllPost({
+  var post = res.getAllPost({
     exclude: [
-      security.md5('register'),
-      security.md5('securityToken')
+      utils.md5('register'),
+      utils.md5('securityToken')
     ]
-  }), function(status) {
-    if (!utils.isUndefined(status[0][0].success)) {
-      res.send(res.__.messages.database.success[status[0][0].success]);
+  });
+
+  usersModel.save(post, function(status) {
+    if (utils.isUndefined(status)) {
+      res.redirect('/');
     } else {
-      res.send(res.__.messages.database.errors[status[0][0].error]);
+      var message = res.__.messages.users.register.success;
+      var alertType = 'success';
+      var iconType = 'fa-check';
+
+      if (utils.isDefined(status[0][0].error)) {
+        message = res.__.messages.database.errors[status[0][0].error];
+        alertType = 'danger';
+        iconType = 'fa-times';
+      }
+
+      res.render('users/registered', {
+        message: message,
+        alertType: alertType,
+        iconType: iconType
+      });
     }
   });
 });
