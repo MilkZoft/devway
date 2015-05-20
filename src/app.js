@@ -14,8 +14,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 // config
 var config = require('./lib/config');
 
-// security
-var security = require('./lib/helpers/security');
+// utils
+var utils = require('./lib/helpers/utils');
 
 // logging
 var logger = require('morgan');
@@ -35,7 +35,7 @@ app.use(session);
 // security token
 app.use(function(req, res, next) {
   if (!res.session('securityToken')) {
-    res.session('securityToken', security.sha1(new Date()));
+    res.session('securityToken', utils.sha1(new Date()));
   }
 
   next();

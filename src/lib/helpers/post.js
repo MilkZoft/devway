@@ -2,7 +2,6 @@
 
 var config = require('../config');
 var _ = require('lodash');
-var security = require('./security');
 var utils = require('./utils');
 var post = {};
 
@@ -48,7 +47,7 @@ module.exports = function(req, res, next) {
 
   function validateSecurityToken() {
     if (config().validateSecurityToken) {
-      if (res.session('securityToken') === req.body[security.md5('securityToken')]) {
+      if (res.session('securityToken') === req.body[utils.md5('securityToken')]) {
         post = req.body;
       } else {
         post = false;
@@ -68,8 +67,8 @@ module.exports = function(req, res, next) {
       filter = options[1];
     }
 
-    if (typeof post[security.md5(input)] !== 'undefined') {
-      value = post[security.md5(input)];
+    if (typeof post[utils.md5(input)] !== 'undefined') {
+      value = post[utils.md5(input)];
 
       if (filter === 'escape') {
         value = utils.escape(value);

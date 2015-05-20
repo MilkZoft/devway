@@ -2,7 +2,6 @@
 
 var config = require('../config');
 var _ = require('lodash');
-var security = require('./security');
 var utils = require('./utils');
 
 module.exports = {
@@ -34,10 +33,12 @@ module.exports = {
 
     _.forIn(attrs, function(value, attr) {
       if (attr === 'name') {
-        value = security.md5(value);
+        value = utils.md5(value);
       }
 
-      html += attr + '="' + value + '" ';
+      if (value !== '') {
+        html += attr + '="' + value + '" ';
+      }
     });
 
     html += ' />';
