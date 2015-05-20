@@ -104,15 +104,49 @@ module.exports = {
 
   // Forms helpers
   input: function(options) {
-    if (!utils.isUndefined(options.hash)) {
+    if (utils.isDefined(options.hash)) {
+      return form.createInput(options.hash);
+    }
+  },
+
+  submit: function(options) {
+    if (utils.isDefined(options.hash)) {
+      options.hash.type = 'submit';
+
+      if (utils.isUndefined(options.hash.class)) {
+        options.hash.class = 'btn btn-danger submit';
+      }
+
+      return form.createInput(options.hash);
+    }
+  },
+
+  password: function(options) {
+    if (utils.isDefined(options.hash)) {
+      options.hash.id = 'password';
+      options.hash.type = 'password';
+      options.hash.name = 'password';
+
+      return form.createInput(options.hash);
+    }
+  },
+
+  email: function(options) {
+    if (utils.isDefined(options.hash)) {
+      options.hash.id = 'email';
+      options.hash.type = 'email';
+      options.hash.name = 'email';
+      options.hash.maxlength = '80';
+      options.hash.pattern = '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$';
+
       return form.createInput(options.hash);
     }
   },
 
   hidden: function(options) {
-    options.hash.type = 'hidden';
+    if (utils.isDefined(options.hash)) {
+      options.hash.type = 'hidden';
 
-    if (!utils.isUndefined(options.hash)) {
       return form.createInput(options.hash);
     }
   },
@@ -120,7 +154,7 @@ module.exports = {
   token: function(securityToken) {
     var options = {};
 
-    if (!utils.isUndefined(securityToken)) {
+    if (utils.isDefined(securityToken)) {
       options.type  = 'hidden';
       options.name  = 'securityToken';
       options.value = securityToken;
@@ -130,7 +164,7 @@ module.exports = {
   },
 
   checkbox: function(options) {
-    if (!utils.isUndefined(options.hash)) {
+    if (utils.isDefined(options.hash)) {
       options.hash.type = 'checkbox';
 
       return form.createInput(options.hash);
@@ -138,7 +172,7 @@ module.exports = {
   },
 
   radio: function(options) {
-    if (!utils.isUndefined(options.hash)) {
+    if (utils.isDefined(options.hash)) {
       options.hash.type = 'radio';
 
       return form.createInput(options.hash);
@@ -146,7 +180,7 @@ module.exports = {
   },
 
   label: function(options) {
-    if (!utils.isUndefined(options.hash)) {
+    if (utils.isDefined(options.hash)) {
       var labelText = (options.hash.text) ? options.hash.text : '';
 
       return form.createLabel(options.hash, labelText);
@@ -161,7 +195,7 @@ module.exports = {
     var networks = [];
     var network = {};
 
-    if (!utils.isUndefined(options.hash)) {
+    if (utils.isDefined(options.hash)) {
       if (options.hash.facebook) {
         network = {
           name: 'facebook',
