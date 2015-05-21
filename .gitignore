@@ -1,3 +1,5 @@
+.vagrant
+Berksfile.lock
 node_modules
 .DS_Store
 src/public/bower_components
