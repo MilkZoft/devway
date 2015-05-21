@@ -20,7 +20,10 @@ module.exports = function(req, res, next) {
 
     if (utils.isUndefined(options)) {
       options = {
-        exclude: []
+        exclude: [
+          utils.md5('register'),
+          utils.md5('securityToken')
+        ]
       };
     }
 

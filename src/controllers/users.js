@@ -55,12 +55,7 @@ router.get('/register', function(req, res, next) {
 
 /* POST actions */
 router.post('/registration', function(req, res, next) {
-  var post = res.getAllPost({
-    exclude: [
-      utils.md5('register'),
-      utils.md5('securityToken')
-    ]
-  });
+  var post = res.getAllPost();
 
   usersModel.save(post, function(status) {
     if (utils.isUndefined(status)) {
