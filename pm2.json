@@ -2,7 +2,7 @@
   "apps" : [{
     "name"          : "CLIENT",
     "script"        : "./src/app.js",
-    "port"          : "2525",
+    "port"          : "3000",
     "watch"         : "./src",
     "ignore_watch"  : ["./src/stylus", "./src/public"],
     "watch_options" : {

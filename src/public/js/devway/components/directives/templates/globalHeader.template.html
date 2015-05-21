@@ -1,15 +1,27 @@
 <header>
     <div class="wrapper">
         <div class="logo">
-            <a tabindex="0" accesskey="1" title="Codejobs" href="{{ globalHeaderVm.basePath }}">
-                <span class="code">Developer</span><span class="jobs">Way</span>
+            <a tabindex="0" accesskey="1" title="{{ globalHeaderVm.i18n.site.title }}" href="{{ globalHeaderVm.basePath }}">
+                <span class="developer">Dev</span><span class="way">Way</span>
             </a>
         </div>
 
         <div class="connect" ng-if="!globalHeaderVm.isConnected">
-            <a tabindex="0" title="{{ globalHeaderVm.i18n.menu.login.title }}" class="login" href="{{ globalHeaderVm.basePath }}/users/login">{{ globalHeaderVm.i18n.menu.login.text }}</a>
+            <a
+                ng-click="globalHeaderVm.modal({type: 'login'})"
+                tabindex="0"
+                title="{{ globalHeaderVm.i18n.menu.login.title }}"
+                class="login">
+                {{ globalHeaderVm.i18n.menu.login.text }}
+            </a>
 
-            <a tabindex="24" title="{{ globalHeaderVm.i18n.menu.register.title }}" class="register" href="{{ globalHeaderVm.basePath }}/users/register">{{ globalHeaderVm.i18n.menu.register.text }}</a>
+            <a
+                ng-click="globalHeaderVm.modal({type: 'register'})"
+                tabindex="0"
+                title="{{ globalHeaderVm.i18n.menu.register.title }}"
+                class="register">
+                {{ globalHeaderVm.i18n.menu.register.text }}
+            </a>
         </div>
     </div>
 </header>

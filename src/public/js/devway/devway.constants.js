@@ -1,13 +1,17 @@
-'use strict';
+(function() {
+  'use strict';
 
-define(function() {
-  var devwayConstants = angular.module('devwayConstants', []);
+  define(function(require) {
+    var angular = require('angular');
 
-  devwayConstants
-    .constant('CONFIG', window.devwayConfig.config)
-    .constant('__', JSON.parse(window.devwayConfig.i18n));
+    var devwayConstants = angular.module('devwayConstants', []);
 
-  devwayConstants.run(['$log', function($log) {
-    $log.info('Inside devway.constants');
-  }]);
-});
+    devwayConstants
+      .constant('CONFIG', window.devwayConfig.config)
+      .constant('__', JSON.parse(window.devwayConfig.i18n));
+
+    devwayConstants.run(['$log', function($log) {
+      $log.info('Inside devway.constants');
+    }]);
+  });
+})();

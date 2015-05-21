@@ -1,10 +1,13 @@
+*.orig
+.DS_Store
+.idea
 .vagrant
 Berksfile.lock
+dist
+git-info.txt
+logs/*.log
 node_modules
-.DS_Store
+npm-debug.log
 src/public/bower_components
 src/public/css/**/*.css
 src/public/css/*.css
-npm-debug.log
-logs/*.log
-git-info.txt

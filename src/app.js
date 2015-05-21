@@ -7,31 +7,39 @@ var path = require('path');
 // Initializing express application
 var app = express();
 
+// Body Parser
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: false}));
+
 // config
 var config = require('./lib/config');
+
+// utils
+var utils = require('./lib/helpers/utils');
 
 // logging
 var logger = require('morgan');
 app.use(logger('dev'));
 
+// post
+var post = require('./lib/helpers/post');
+app.use(post);
+
 // cookies/session
-var session = require('express-session');
-var MongoStore = require('connect-mongo')(session);
 var cookieParser = require('cookie-parser');
+var session = require('./lib/helpers/session');
 
 app.use(cookieParser());
+app.use(session);
 
-app.use(session({
-  secret: config().security.secret,
-  saveUninitialized: true,
-  resave: true,
-  cookie: {
-    maxAge: 180 * 60 * 1000 // 3 hours
-  },
-  store: new MongoStore({
-    db : config().database.mongodb.sessionDatabase
-  })
-}));
+// security token
+app.use(function(req, res, next) {
+  if (!res.session('securityToken')) {
+    res.session('securityToken', utils.sha1(new Date()));
+  }
+
+  next();
+});
 
 // layout
 var exphbs = require('express-handlebars');

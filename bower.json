@@ -10,6 +10,7 @@
     "lodash": "2.4.1",
     "normalize-css": "*",
     "requirejs": "~2.1.17",
-    "restangular": "~1.5.1"
+    "restangular": "~1.5.1",
+    "rrssb": "~1.8.1"
   }
 }

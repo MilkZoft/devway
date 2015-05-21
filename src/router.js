@@ -5,13 +5,15 @@ var availableLanguages = config().languages.list.join('|');
 var defaultController;
 var apiController;
 var homeController;
-var twitterController;
+var authController;
+var usersController;
 
 module.exports = function(app) {
   defaultController = require('./controllers/' + config().controllers.default);
   apiController     = require('./controllers/api');
   homeController    = require('./controllers/home');
-  twitterController = require('./controllers/twitter');
+  authController    = require('./controllers/auth');
+  usersController   = require('./controllers/users');
 
   // Load necessary helpers
   var i18n = require('./lib/helpers/i18n');
@@ -23,8 +25,10 @@ module.exports = function(app) {
     res.locals.isMobile = utils.isMobile(req.headers['user-agent']);
     res.locals.config.basePath = config().baseUrl + i18n.getLanguagePath(req.url);
     res.locals.currentLanguage = i18n.getCurrentLanguage(req.url);
-    res.locals.__ = i18n.load(i18n.getCurrentLanguage(req.url));
+    res.__ = res.locals.__ = i18n.load(i18n.getCurrentLanguage(req.url));
     res.locals.basePath = res.locals.config.basePath;
+    res.locals.securityToken = res.session('securityToken');
+
     next();
   });
 
@@ -41,11 +45,10 @@ module.exports = function(app) {
 
   // Controllers dispatch
   app.use('/', defaultController);
-  app.use('/:language(' + availableLanguages + ')', defaultController);
   app.use('/api', apiController);
-  app.use('/twitter', twitterController);
+  app.use('/auth', authController);
   app.use('/home', homeController);
-  app.use('/:language(' + availableLanguages + ')/home', homeController);
+  app.use('/users', usersController);
 
   // catch 404 and forward to error handler
   app.use(function(req, res, next) {

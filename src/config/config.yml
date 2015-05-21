@@ -1,10 +1,12 @@
 ---
 production: &default
-  serverPort: 2525
+  serverPort: 3000
   baseUrl: http://www.developerway.com
   baseApp: /js/devway/components
   baseApi: /api/
   cookieDomain: .developerway.com
+  validateSecurityToken: true
+  refreshSecurityToken: false
   facebook:
     account: deveway
     likes: 12K
@@ -19,7 +21,7 @@ production: &default
     consumerSecret: tvodkw52PiJEVxS7XskLCXeH94qnGtNdHNFbNdsUTr4
     accessToken: 461804603-uAtAvzW2EPTk5pl9O4fN9UXKTJ11fVba1ObYLbTU
     accessTokenSecret: 6xRUpNVpZLtnN3HAbEV4ZZopdU4wLcJ0TUvFTO2RaeRES
-    callbackUrl: http://local.developerway.com/twitter/callback
+    callbackUrl: http://local.developerway.com/auth/twitter/callback
     requestTokenUrl: https://api.twitter.com/oauth/request_token
     accessTokenUrl: https://api.twitter.com/oauth/access_token
     authenticateUrl: https://twitter.com/oauth/authenticate
@@ -52,10 +54,10 @@ production: &default
     secret: d3vel0perw4y.com
   database:
     mysql:
-      host: 127.0.0.1
-      user: root
-      password:
-      database: developerway
+      host: muucms.com
+      user: muucmsco_devway
+      password: Dev2182
+      database: muucmsco_devway
       port: 3306
       debug: true
       socket: /var/mysql/mysql.sock

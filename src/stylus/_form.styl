@@ -1,0 +1,245 @@
+input
+textarea
+select
+button
+    $noSelect()
+
+.input
+    $border(#CCC)
+    $borderRadius(4px)
+    $boxShadow(0, 1px, 1px, true, 0.075)
+    background-color $white
+    color $darkGray
+    font-size 14px
+    height 40px
+    margin 10px 0 10px 0
+    padding-left 10px
+    width 100%
+
+.checkboxLabel
+    font-size 14px
+    color $gray
+
+    &:before
+        $noContent()
+        $border($blueDevWay)
+        background-color $white
+        border-radius 50%
+        display inline-block
+        height 25px
+        margin-right 10px
+        text-align center
+        vertical-align middle
+        width 25px
+
+input[type=checkbox]
+    display none
+    & + .checkboxLabel
+        $pointer()
+
+input[type=checkbox]:checked
+    & + .checkboxLabel
+        &:before
+            $fa("\f00c", 24px, $white, $blueDevWay)
+
+.btn
+    $noSelect()
+    $pointer()
+    $border(transparent)
+    position relative
+    display inline-block
+    padding 6px 12px
+    margin-bottom 0
+    font-size 14px
+    font-weight normal
+    line-height 1.42857143
+    text-align center
+    white-space nowrap
+    vertical-align middle
+    background-image none
+    border-radius 4px
+
+.btn.disabled
+.btn[disabled]
+    pointer-events none
+    cursor not-allowed
+    box-shadow none
+    opacity .65
+
+.btn-default
+    color $darkGray
+    background-color $white
+    border-color $gray
+
+.btn-default:hover
+.btn-default:focus
+.btn-default:active
+.btn-default.active
+    color $darkGray
+    background-color $defaultBg
+    border-color $defaultBorder
+
+.btn-default:active
+.btn-default.active
+    background-image none
+
+.btn-default.disabled
+.btn-default[disabled]
+.btn-default.disabled:hover
+.btn-default[disabled]:hover
+.btn-default.disabled:focus
+.btn-default[disabled]:focus
+.btn-default.disabled:active
+.btn-default[disabled]:active
+.btn-default.disabled.active
+.btn-default[disabled].active
+    background-color $white
+    border-color $gray
+
+.btn-primary
+    color $white
+    background-color $primaryBg
+    border-color $primaryBorder
+
+.btn-primary:hover
+.btn-primary:focus
+.btn-primary:active
+.btn-primary.active
+    color $white
+    background-color $primaryBgHover
+    border-color $primaryBorderHover
+
+.btn-primary:active
+.btn-primary.active
+    background-image none
+
+.btn-primary.disabled
+.btn-primary[disabled]
+.btn-primary.disabled:hover
+.btn-primary[disabled]:hover
+.btn-primary.disabled:focus
+.btn-primary[disabled]:focus
+.btn-primary.disabled:active
+.btn-primary[disabled]:active
+.btn-primary.disabled.active
+.btn-primary[disabled].active
+    background-color $primaryBg
+    border-color $primaryBorder
+
+.btn-success
+    color $white
+    background-color $sucessBg
+
+.btn-success:hover
+.btn-success:focus
+.btn-success:active
+.btn-success.active
+    color $white
+    background-color $sucessBgHover
+    border-color $sucessBorderHover
+
+.btn-success:active
+.btn-success.active
+    background-image none
+
+.btn-success.disabled
+.btn-success[disabled]
+.btn-success.disabled:hover
+.btn-success[disabled]:hover
+.btn-success.disabled:focus
+.btn-success[disabled]:focus
+.btn-success.disabled:active
+.btn-success[disabled]:active
+.btn-success.disabled.active
+.btn-success[disabled].active
+    background-color $sucessBg
+    border-color $sucessBorder
+
+.btn-info
+    color $white
+    background-color $infoBg
+
+.btn-info:hover
+.btn-info:focus
+.btn-info:active
+.btn-info.active
+    color $white
+    background-color $infoBgHover
+    border-color $infoBorderHover
+
+.btn-info:active
+.btn-info.active
+.open > .dropdown-toggle.btn-info
+    background-image none
+
+.btn-info.disabled
+.btn-info[disabled]
+.btn-info.disabled:hover
+.btn-info[disabled]:hover
+.btn-info.disabled:focus
+.btn-info[disabled]:focus
+.btn-info.disabled:active
+.btn-info[disabled]:active
+.btn-info.disabled.active
+.btn-info[disabled].active
+    background-color $infoDisabledBg
+    border-color $infoDisabledBorder
+
+.btn-warning
+    color $white
+    background-color $warningBg
+    border-color $warningBorder
+
+.btn-warning:hover
+.btn-warning:focus
+.btn-warning:active
+.btn-warning.active
+    color $white
+    background-color $warningBgHover
+    border-color $warningBorderHover
+
+.btn-warning:active
+.btn-warning.active
+    background-image none
+
+.btn-warning.disabled
+.btn-warning[disabled]
+.btn-warning.disabled:hover
+.btn-warning[disabled]:hover
+.btn-warning.disabled:focus
+.btn-warning[disabled]:focus
+.btn-warning.disabled:active
+.btn-warning[disabled]:active
+.btn-warning.disabled.active
+.btn-warning[disabled].active
+    background-color $warningDisabledBg
+    border-color $warningDisabledBorder
+
+.btn-danger
+    color $white
+    background-color $dangerBg
+
+.btn-danger:hover
+.btn-danger:focus
+.btn-danger:active
+.btn-danger.active
+    color $white
+    background-color $dangerBgHover
+    border-color $dangerBorderHover
+
+.btn-danger:active
+.btn-danger.active
+    background-image none
+
+.btn-danger.disabled
+.btn-danger[disabled]
+.btn-danger.disabled:hover
+.btn-danger[disabled]:hover
+.btn-danger.disabled:focus
+.btn-danger[disabled]:focus
+.btn-danger.disabled:active
+.btn-danger[disabled]:active
+.btn-danger.disabled.active
+.btn-danger[disabled].active
+    background-color $dangerDisabledBg
+    border-color $dangerDisabledBorder

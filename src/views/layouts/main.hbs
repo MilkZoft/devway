@@ -22,10 +22,12 @@
     </head>
 
     <body>
-        <div ng-controller="DevwayAppController as vm">
+        <div id="container" ng-controller="DevwayAppController as vm">
             <global-header
                 i18n="vm.__">
             </global-header>
+
+            {{> modals }}
 
             {{> sidebar }}
             {{> content }}
