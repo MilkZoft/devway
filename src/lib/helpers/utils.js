@@ -1,16 +1,38 @@
 'use strict';
 
+var security = require('./security');
+
 module.exports = {
+  md5: function(str) {
+    if (this.isDefined(str)) {
+      return security.md5(str);
+    }
+
+    return false;
+  },
+
+  sha1: function(str) {
+    if (this.isDefined(str)) {
+      return security.sha1(str);
+    }
+
+    return false;
+  },
+
+  encrypt: function(str) {
+    return security.sha1(security.md5(str));
+  },
+
   isYear: function(year) {
-    return (typeof(year) !== 'undefined' && year.length === 4 && !isNaN(year));
+    return (typeof year !== 'undefined' && year.length === 4 && !isNaN(year));
   },
 
   isMonth: function(month) {
-    return (typeof(month) !== 'undefined' && month.length === 2 && !isNaN(month) && month <= 12);
+    return (typeof month !== 'undefined' && month.length === 2 && !isNaN(month) && month <= 12);
   },
 
   isDay: function(day) {
-    return (typeof(day) !== 'undefined' && day.length === 2 && !isNaN(day) && day <= 31);
+    return (typeof day !== 'undefined' && day.length === 2 && !isNaN(day) && day <= 31);
   },
 
   isDesktop: function(ua) {
@@ -25,8 +47,20 @@ module.exports = {
     return (/mobile/i.test(ua)) ? 'mobile' : 'desktop';
   },
 
+  isFunction: function(func) {
+    return (typeof func === 'function') ? true : false;
+  },
+
   isDefined: function(variable) {
-    return (typeof(variable) !== 'undefined') ? true : false;
+    return (typeof variable !== 'undefined') ? true : false;
+  },
+
+  isUndefined: function(variable) {
+    return (typeof variable === 'undefined') ? true : false;
+  },
+
+  isNumber: function(number) {
+    return !isNaN(number) ? true : false;
   },
 
   getParamsFromUrl: function(params) {
@@ -52,16 +86,32 @@ module.exports = {
   },
 
   removeHTML: function(str) {
-    return str.replace(/(<([^>]+)>)/ig, '');
+    if (this.isDefined(str)) {
+      return str.replace(/(<([^>]+)>)/ig, '');
+    }
+
+    return false;
   },
 
-  escape: function(html) {
-    return String(html)
-      .replace(/&/g, '&amp;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
+  escape: function(str) {
+    if (this.isDefined(str)) {
+      return str
+        .replace(/'/g, '\\\'')
+        .replace(/"/g, '\\\\"')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
+    return false;
+  },
+
+  clean: function(str) {
+    if (this.isDefined(str)) {
+      return this.removeHTML(str).replace(/[`ª´·¨Ç~¿!#$%^&*()_|+\-=?;'",<>\{\}\[\]\\]/gi, '');
+    }
+
+    return false;
   },
 
   convertSecondsToHHMMSS: function(seconds) {
@@ -75,7 +125,7 @@ module.exports = {
 
     seconds = seconds - (hours * 3600) - (minutes * 60);
 
-    if (hours   < 10) {
+    if (hours < 10) {
       hours = '0' + hours;
     }
 

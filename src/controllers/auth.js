@@ -7,17 +7,18 @@ var twitter = require('../lib/helpers/twitter');
 
 router.get('/twitter', function(req, res) {
   twitter.getOAuthRequestToken(function(tokens) {
-    req.session.oauth = {
+    var oauthSession = {
       'token': tokens[0],
       'tokenSecret': tokens[1]
     };
 
+    res.session('oauth', oauthSession);
     res.redirect(twitter.getAuthenticateUrl(tokens[0]));
   });
 });
 
 router.get('/twitter/callback', function(req, res) {
-  var oauthData = req.session.oauth;
+  var oauthData = res.session('oauth');
 
   if (oauthData) {
     var oauthVerifier = req.query['oauth_verifier'];
@@ -27,10 +28,10 @@ router.get('/twitter/callback', function(req, res) {
       oauthData.tokenSecret,
       oauthVerifier,
       function(sessions) {
-        req.session.oauth = sessions[0];
-        req.session.user  = sessions[1];
+        res.session('oauth', sessions[0]);
+        res.session('user', sessions[1]);
 
-        res.redirect(res.locals.basePath);
+        res.redirect(res.locals.basePath + '/users/validation');
       }
     );
   }

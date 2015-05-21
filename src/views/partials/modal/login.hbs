@@ -3,19 +3,17 @@
 
     <div class="form-group">
         <p>
-            {{{ input name = "username" placeholder = __.menu.login.username }}}
+            {{{ input name = "username" placeholder = __.users.username }}}
         </p>
 
         <p>
-            {{{ input type = "password" name = "password" placeholder = __.menu.login.password }}}
+            {{{ input type = "password" name = "password" placeholder = __.users.password }}}
         </p>
 
         <p>
-            {{{ input id = "remember" name = "remember" type = "checkbox" checked = "true" }}}
+            {{{ checkbox id = "remember" name = "remember" checked = "true" }}}
 
-            <label for="remember">
-                {{ __.menu.login.remember }}
-            </label>
+            {{{ label for = "remember" class="checkboxLabel" text = __.menu.login.remember }}}
         </p>
 
         <p>
@@ -33,9 +31,9 @@
     {{{ socialButtons
         facebook     = true
         facebookText = __.social.facebook.signIn
-        facebookLink = "auth/facebook"
+        facebookLink = "/auth/facebook"
         twitter      = true
         twitterText  = __.social.twitter.signIn
-        twitterLink  = "auth/twitter"
+        twitterLink  = "/auth/twitter"
     }}}
 </div>

@@ -54,6 +54,7 @@ var self = {
 
               var userSession = {
                 'networkId': data['id'],
+                'network'  : 'twitter',
                 'username' : data['screen_name'],
                 'avatar'   : data['profile_image_url']
               };

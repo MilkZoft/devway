@@ -1,3 +1,40 @@
 <div class="register">
-    <h2><i class="fa fa-user-secret"></i></h2>
+    <h2>{{{ icon "fa-users" }}}</h2>
+
+    <form action="/users/registration" method="post">
+        <div class="form-group">
+            <p>
+                {{{ input name = "username" placeholder = __.users.username required = true }}}
+            </p>
+
+            <p>
+                {{{ password placeholder = __.users.password required = true }}}
+            </p>
+
+            <p>
+                {{{ email placeholder = __.users.example.email required = true }}}
+            </p>
+
+            <p>
+                {{{ submit name = "register" value = __.menu.register.text }}}
+            </p>
+
+            {{{ hidden name = "subscribed" value = 1 }}}
+            {{{ hidden name = "avatar"     value = '' }}}
+            {{{ hidden name = "network"    value = 'website' }}}
+            {{{ hidden name = "networkId"  value = 0 }}}
+            {{{ token securityToken }}}
+        </div>
+    </form>
+
+    <div class="social-group">
+        {{{ socialButtons
+            facebook     = true
+            facebookText = __.social.facebook.signUp
+            facebookLink = "/auth/facebook"
+            twitter      = true
+            twitterText  = __.social.twitter.signUp
+            twitterLink  = "/auth/twitter"
+        }}}
+    </div>
 </div>

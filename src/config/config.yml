@@ -5,6 +5,8 @@ production: &default
   baseApp: /js/devway/components
   baseApi: /api/
   cookieDomain: .developerway.com
+  validateSecurityToken: true
+  refreshSecurityToken: false
   facebook:
     account: deveway
     likes: 12K
@@ -52,10 +54,10 @@ production: &default
     secret: d3vel0perw4y.com
   database:
     mysql:
-      host: 127.0.0.1
-      user: root
-      password:
-      database: developerway
+      host: muucms.com
+      user: muucmsco_devway
+      password: Dev2182
+      database: muucmsco_devway
       port: 3306
       debug: true
       socket: /var/mysql/mysql.sock
