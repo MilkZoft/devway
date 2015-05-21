@@ -35,11 +35,11 @@ module.exports = {
     var order  = (obj.order)  ? ' ORDER BY ' + obj.order + ' ' : '';
     var limit  = (obj.limit)  ? ' LIMIT '    + obj.limit + ' ' : '';
 
-    var sql    = 'SELECT ' + fields    + ' ';
-        sql   += 'FROM '   + obj.table + ' ';
-        sql   += group;
-        sql   += order;
-        sql   += limit;
+    var sql  = 'SELECT ' + fields    + ' ';
+        sql += 'FROM '   + obj.table + ' ';
+        sql += group;
+        sql += order;
+        sql += limit;
 
     connection.query(sql, callback);
   },
@@ -54,12 +54,12 @@ module.exports = {
     var order  = (obj.order)  ? ' ORDER BY ' + obj.order + ' ' : '';
     var limit  = (obj.limit)  ? ' LIMIT '    + obj.limit + ' ' : '';
 
-    var sql    = 'SELECT ' + fields    + ' ';
-        sql   += 'FROM '   + obj.table + ' ';
-        sql   += 'WHERE '  + obj.field + ' = \'' + obj.value + '\'';
-        sql   += group;
-        sql   += order;
-        sql   += limit;
+    var sql  = 'SELECT ' + fields    + ' ';
+        sql += 'FROM '   + obj.table + ' ';
+        sql += 'WHERE '  + obj.field + ' = \'' + obj.value + '\'';
+        sql += group;
+        sql += order;
+        sql += limit;
 
     connection.query(sql, callback);
   },
@@ -78,12 +78,12 @@ module.exports = {
     var order  = (obj.order)  ? ' ORDER BY ' + obj.order + ' ' : '';
     var limit  = (obj.limit)  ? ' LIMIT '    + obj.limit + ' ' : '';
 
-    var sql    = 'SELECT ' + fields    + ' ';
-        sql   += 'FROM '   + obj.table + ' ';
-        sql   += 'WHERE '  + obj.query + ' ';
-        sql   += group;
-        sql   += order;
-        sql   += limit;
+    var sql  = 'SELECT ' + fields    + ' ';
+        sql += 'FROM '   + obj.table + ' ';
+        sql += 'WHERE '  + obj.query + ' ';
+        sql += group;
+        sql += order;
+        sql += limit;
 
     connection.query(sql, callback);
   },
@@ -94,9 +94,9 @@ module.exports = {
     }
 
     var fields = (obj.fields) ? obj.fields : '*';
-    var sql    = 'SELECT ' + fields    + ' ';
-        sql   += 'FROM '   + obj.table + ' ';
-        sql   += 'LIMIT 1';
+    var sql  = 'SELECT ' + fields    + ' ';
+        sql += 'FROM '   + obj.table + ' ';
+        sql += 'LIMIT 1';
 
     connection.query(sql, callback);
   },
@@ -107,9 +107,9 @@ module.exports = {
     }
 
     var fields = (obj.fields) ? obj.fields : '*';
-    var sql    = 'SELECT ' + fields    + ' ';
-        sql   += 'FROM '   + obj.table + ' ';
-        sql   += 'ORDER BY ' + obj.key + ' DESC LIMIT 1';
+    var sql  = 'SELECT ' + fields    + ' ';
+        sql += 'FROM '   + obj.table + ' ';
+        sql += 'ORDER BY ' + obj.key + ' DESC LIMIT 1';
 
     connection.query(sql, callback);
   },
